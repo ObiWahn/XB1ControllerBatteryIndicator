@@ -160,6 +160,15 @@ namespace XB1ControllerBatteryIndicator.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Warn at battery level.
+        /// </summary>
+        public static string ContextMenu_WarningThreshold {
+            get {
+                return ResourceManager.GetString("ContextMenu_WarningThreshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Four.
         /// </summary>
         public static string ControllerIndex_Four {
@@ -219,6 +228,15 @@ namespace XB1ControllerBatteryIndicator.Localization {
         public static string Toast_Text2 {
             get {
                 return ResourceManager.GetString("Toast_Text2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Battery of controller {0} is low..
+        /// </summary>
+        public static string Toast_TextLow {
+            get {
+                return ResourceManager.GetString("Toast_TextLow", resourceCulture);
             }
         }
         

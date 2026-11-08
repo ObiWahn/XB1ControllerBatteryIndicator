@@ -189,4 +189,10 @@
   <data name="ContextMenu_FastPolling" xml:space="preserve">
     <value>Fast check (every 5 seconds)</value>
   </data>
+  <data name="ContextMenu_WarningThreshold" xml:space="preserve">
+    <value>Warn at battery level</value>
+  </data>
+  <data name="Toast_TextLow" xml:space="preserve">
+    <value>Battery of controller {0} is low.</value>
+  </data>
 </root>

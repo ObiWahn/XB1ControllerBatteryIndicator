@@ -111,6 +111,19 @@ namespace XB1ControllerBatteryIndicator
             _checkNow.Set();
         }
 
+        //the setting stores the highest BatteryLevel that triggers the warning
+        public bool IsWarningThresholdEmpty => Settings.Default.LowBatteryWarningThreshold == (int)BatteryLevel.Empty;
+        public bool IsWarningThresholdLow => Settings.Default.LowBatteryWarningThreshold == (int)BatteryLevel.Low;
+
+        public void SetWarningThreshold(int batteryLevel)
+        {
+            Settings.Default.LowBatteryWarningThreshold = batteryLevel;
+            Settings.Default.Save();
+            NotifyOfPropertyChange(nameof(IsWarningThresholdEmpty));
+            NotifyOfPropertyChange(nameof(IsWarningThresholdLow));
+            CheckNow();
+        }
+
         //the menu checkbox already changed the setting through its binding
         public void FastPollingChanged()
         {
@@ -160,7 +173,7 @@ namespace XB1ControllerBatteryIndicator
             if (!toast_shown[controllerId])
             {
                 toast_shown[controllerId] = true;
-                ShowToast(controllerIndex);
+                ShowToast(controllerIndex, batteryInfo.Value.BatteryLevel);
             }
             //with "repeat on loop" the sound is played by PlayLoopedWarningSound instead
             if (Settings.Default.LowBatteryWarningSound_Enabled && !Settings.Default.LowBatteryWarningSound_Loop_Enabled &&
@@ -180,7 +193,7 @@ namespace XB1ControllerBatteryIndicator
             //wired controllers and controllers still waiting for data report no meaningful level
             var batteryType = batteryInfo.Value.BatteryType;
             bool onBattery = batteryType == BatteryType.Alkaline || batteryType == BatteryType.Nimh;
-            return onBattery && batteryInfo.Value.BatteryLevel == BatteryLevel.Empty;
+            return onBattery && (int)batteryInfo.Value.BatteryLevel <= Settings.Default.LowBatteryWarningThreshold;
         }
 
         private void PlayLoopedWarningSound()
@@ -295,10 +308,11 @@ namespace XB1ControllerBatteryIndicator
             ErrorHelper.VerifySucceeded(newShortcutSave.Save(shortcutPath, true));
         }
         //send a toast
-        private void ShowToast(UserIndex controllerIndex)
+        private void ShowToast(UserIndex controllerIndex, BatteryLevel batteryLevel)
         {
             int controllerId = numdict[$"{controllerIndex}"];
             var controllerIndexCaption = GetControllerIndexCaption(controllerIndex);
+            var toastText = batteryLevel == BatteryLevel.Empty ? Strings.Toast_Text : Strings.Toast_TextLow;
             string argsDismiss = $"dismissed";
             string argsLaunch = $"{controllerId}";
             //how the content gets arranged
@@ -306,7 +320,7 @@ namespace XB1ControllerBatteryIndicator
                 $@"<visual>
                         <binding template='ToastGeneric'>
                             <text>{string.Format(Strings.Toast_Title, controllerIndexCaption)}</text>
-                            <text>{string.Format(Strings.Toast_Text, controllerIndexCaption)}</text>
+                            <text>{string.Format(toastText, controllerIndexCaption)}</text>
                             <text>{Strings.Toast_Text2}</text>
                         </binding>
                     </visual>";

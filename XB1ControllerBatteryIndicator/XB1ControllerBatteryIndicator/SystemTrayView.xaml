@@ -46,6 +46,11 @@
                 <MenuItem x:Name="LowBatteryWarningSound_Enabled" Header="{my:Localization ContextMenu_LowBatteryWarningSound_Enabled}" IsCheckable="True" Click="LowBatteryWarningSound_Enabled_Click" IsChecked="{my:SettingBinding Path=LowBatteryWarningSound_Enabled}" />
                 <MenuItem x:Name="LowBatteryWarningSound_Loop_Enabled" Header="{my:Localization ContextMenu_LowBatteryWarningSound_Loop_Enabled}" IsCheckable="True" Click="LowBatteryWarningSound_Loop_Enabled_Click" IsChecked="{my:SettingBinding Path=LowBatteryWarningSound_Loop_Enabled}" />
             </MenuItem>
+            <!-- not checkable: clicking would replace the one-way binding with a local value -->
+            <MenuItem Header="{my:Localization ContextMenu_WarningThreshold}">
+                <MenuItem Header="{my:Localization BatteryLevel_Empty}" IsChecked="{Binding IsWarningThresholdEmpty, Mode=OneWay}" cal:Message.Attach="SetWarningThreshold(0)" />
+                <MenuItem Header="{my:Localization BatteryLevel_Low}" IsChecked="{Binding IsWarningThresholdLow, Mode=OneWay}" cal:Message.Attach="SetWarningThreshold(1)" />
+            </MenuItem>
             <MenuItem Header="{my:Localization ContextMenu_FastPolling}" IsCheckable="True" IsChecked="{my:SettingBinding Path=FastPolling}" cal:Message.Attach="FastPollingChanged" />
             <Separator/>
             <MenuItem Header="{my:Localization ContextMenu_Exit}" cal:Message.Attach="ExitApplication" />

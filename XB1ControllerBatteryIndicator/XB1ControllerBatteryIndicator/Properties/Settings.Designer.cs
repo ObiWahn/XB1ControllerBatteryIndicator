@@ -94,5 +94,17 @@ namespace XB1ControllerBatteryIndicator.Properties {
                 this["FastPolling"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LowBatteryWarningThreshold {
+            get {
+                return ((int)(this["LowBatteryWarningThreshold"]));
+            }
+            set {
+                this["LowBatteryWarningThreshold"] = value;
+            }
+        }
     }
 }
