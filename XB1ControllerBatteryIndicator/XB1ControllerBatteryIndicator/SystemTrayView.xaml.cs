@@ -29,7 +29,7 @@ namespace XB1ControllerBatteryIndicator
         private void StartWithWindows()
         {
             String exePath = Process.GetCurrentProcess().MainModule.FileName;
-            autoStartKey.SetValue(appID, exePath);
+            autoStartKey.SetValue(appID, $"\"{exePath}\"");
         }
         //remove autostart key
         private void RemoveAutoStart()
