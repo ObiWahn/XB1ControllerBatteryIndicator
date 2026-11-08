@@ -23,7 +23,7 @@ jobs:
         run: >
           dotnet publish XB1ControllerBatteryIndicator/XB1ControllerBatteryIndicator/XB1ControllerBatteryIndicator.csproj
           -c Release -r win-x64 --self-contained false
-          -p:PublishSingleFile=true -p:DebugType=none
+          -p:DebugType=none -p:RestoreLockedMode=true
           -o publish
 
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

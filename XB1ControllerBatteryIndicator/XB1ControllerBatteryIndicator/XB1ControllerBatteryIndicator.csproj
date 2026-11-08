@@ -11,6 +11,9 @@
     <Company>NiyaShy</Company>
     <Product>XB1ControllerBatteryIndicator</Product>
     <NeutralLanguage>en</NeutralLanguage>
+    <PublishSingleFile>true</PublishSingleFile>
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 
   <ItemGroup>
