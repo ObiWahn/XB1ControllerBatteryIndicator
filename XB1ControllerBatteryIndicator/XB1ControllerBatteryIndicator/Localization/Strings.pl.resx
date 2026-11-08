@@ -117,20 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NewVersionAvailable_Title" xml:space="preserve">
-    <value>Nowa wersja dostępna</value>
-  </data>
-  <data name="NewVersionAvailable_Body" xml:space="preserve">
-    <value>Nowa wersja {0} jest dostępna. Czy chcesz otworzyć stronę programu?</value>
-  </data>
   <data name="ContextMenu_AutoStart" xml:space="preserve">
     <value>Uruchamiaj razem z systemem</value>
   </data>
   <data name="ContextMenu_Exit" xml:space="preserve">
     <value>Zamknij</value>
-  </data>
-  <data name="ContextMenu_UpdateCheck" xml:space="preserve">
-    <value>Sprawdzaj dostępność aktualizacji</value>
   </data>
   <data name="ToolTip_NoController" xml:space="preserve">
     <value>Nie wykryto kontrolera</value>

@@ -4,8 +4,6 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Data;
-using System.Xml;
-using XB1ControllerBatteryIndicator.Localization;
 
 namespace XB1ControllerBatteryIndicator
 {
@@ -19,7 +17,6 @@ namespace XB1ControllerBatteryIndicator
         public SystemTrayView()
         {
             InitializeComponent();
-            CheckForUpdate();
             this.ShowInTaskbar = false;
 
             var language = new CultureInfo(Properties.Settings.Default.Language);
@@ -27,7 +24,6 @@ namespace XB1ControllerBatteryIndicator
         }
         RegistryKey autoStartKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
         private string appID = "XB1ControllerBatteryIndicator";
-        string xmlUrl = "http://xb1cbi.kienai.de/current_version.xml";
 
         //create autostart registry key
         private void StartWithWindows()
@@ -39,66 +35,6 @@ namespace XB1ControllerBatteryIndicator
         private void RemoveAutoStart()
         {
             autoStartKey.DeleteValue(appID, false);
-        }
-        //check if a newer version is available
-        private void CheckForUpdate()
-        {
-            bool update_check = Properties.Settings.Default.UpdateCheck;
-            if (update_check == true)
-            {
-                Version newVersion = null;
-                string update_url = "";
-                XmlTextReader reader;
-                reader = new XmlTextReader(xmlUrl);
-                try
-                {
-                    reader.MoveToContent();
-                    string elementName = "";
-                    if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == appID))
-                    {
-                        while (reader.Read())
-                        {
-                            if (reader.NodeType == XmlNodeType.Element)
-                                elementName = reader.Name;
-                            else
-                            {
-                                if ((reader.NodeType == XmlNodeType.Text) && (reader.HasValue))
-                                {
-                                    switch (elementName)
-                                    {
-                                        case "version":
-                                            newVersion = new Version(reader.Value);
-                                            break;
-                                        case "url":
-                                            update_url = reader.Value;
-                                            break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                }
-                finally
-                {
-                    if (reader != null) reader.Close();
-                }
-                if ((newVersion != null) && (update_url != ""))
-                {
-                    Version curVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-                    if (curVersion.CompareTo(newVersion) < 0)
-                    {
-                        string title = Strings.NewVersionAvailable_Title;
-                        string question = string.Format(Strings.NewVersionAvailable_Body, appID);
-                        if (MessageBoxResult.Yes == MessageBox.Show(this, question, title, MessageBoxButton.YesNo, MessageBoxImage.Question))
-                        {
-                            System.Diagnostics.Process.Start(update_url);
-                        }
-                    }
-                }
-            }
         }
         //autostart-checkbox was clicked
         private void AutoStart_Click(object sender, RoutedEventArgs e)
@@ -116,23 +52,6 @@ namespace XB1ControllerBatteryIndicator
                 Properties.Settings.Default.AutoStart = false;
                 Properties.Settings.Default.Save();
                 this.RemoveAutoStart();
-            }
-        }
-        //update-checkbox was clicked
-        private void Update_Click(object sender, RoutedEventArgs e)
-        {
-            //as with the autostart-bool, this one has to be negated too...
-            bool update_check = !Properties.Settings.Default.UpdateCheck;
-            if (update_check == false)
-            {
-                Properties.Settings.Default.UpdateCheck = true;
-                Properties.Settings.Default.Save();
-                this.CheckForUpdate();
-            }
-            else
-            {
-                Properties.Settings.Default.UpdateCheck = false;
-                Properties.Settings.Default.Save();
             }
         }
         //lowBatteryWarningSound_Enabled-checkbox was clicked

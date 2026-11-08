@@ -117,20 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NewVersionAvailable_Title" xml:space="preserve">
-    <value>Nová verze k dispozici</value>
-  </data>
-  <data name="NewVersionAvailable_Body" xml:space="preserve">
-    <value>Je dostupná nová verze {0}. Chcete otevřít Domovskou stránku?</value>
-  </data>
   <data name="ContextMenu_AutoStart" xml:space="preserve">
     <value>Spustit při startu Windows</value>
   </data>
   <data name="ContextMenu_Exit" xml:space="preserve">
     <value>Konec</value>
-  </data>
-  <data name="ContextMenu_UpdateCheck" xml:space="preserve">
-    <value>Kontrolovat novou verzi při startu</value>
   </data>
   <data name="ToolTip_NoController" xml:space="preserve">
     <value>Nebyl detekován žádný ovladač</value>

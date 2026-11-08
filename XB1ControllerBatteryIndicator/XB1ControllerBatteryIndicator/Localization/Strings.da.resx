@@ -117,20 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NewVersionAvailable_Title" xml:space="preserve">
-    <value>Ny version tilgængelig</value>
-  </data>
-  <data name="NewVersionAvailable_Body" xml:space="preserve">
-    <value>En ny version af {0} er tilgængelig. Vil Du åbne hjemmesiden ?</value>
-  </data>
   <data name="ContextMenu_AutoStart" xml:space="preserve">
     <value>Start med Windows</value>
   </data>
   <data name="ContextMenu_Exit" xml:space="preserve">
     <value>Afslut</value>
-  </data>
-  <data name="ContextMenu_UpdateCheck" xml:space="preserve">
-    <value>Check for ny version ved opstart</value>
   </data>
   <data name="ToolTip_NoController" xml:space="preserve">
     <value>Ingen controller fundet</value>
@@ -194,12 +185,6 @@
   </data>
   <data name="ContextMenu_LowBatteryWarningSound_Loop_Enabled" xml:space="preserve">
     <value>Gentag ved loop</value>
-  </data>
-  <data name="ContextMenu_MinorUpdateCheck" xml:space="preserve">
-    <value>Tjek for mindre opdateringer (ny sprogpakke tilføjet)</value>
-  </data>
-  <data name="ContextMenu_UpdateCheckHeader" xml:space="preserve">
-    <value>Opdaterings tjek</value>
   </data>
   <data name="NewMinorVersionAvailable_Body" xml:space="preserve">
     <value>En mindre opdatering til {0} er tilgængelig. Vil Du åbne hjemmesiden ?</value>

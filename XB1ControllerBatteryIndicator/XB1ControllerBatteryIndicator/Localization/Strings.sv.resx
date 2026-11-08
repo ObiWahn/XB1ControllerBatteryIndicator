@@ -117,20 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NewVersionAvailable_Title" xml:space="preserve">
-    <value>Ny version tillgänglig</value>
-  </data>
-  <data name="NewVersionAvailable_Body" xml:space="preserve">
-    <value>En ny version, {0}, finns tillgänglig. Gå till hemsidan?</value>
-  </data>
   <data name="ContextMenu_AutoStart" xml:space="preserve">
     <value>Starta med Windows</value>
   </data>
   <data name="ContextMenu_Exit" xml:space="preserve">
     <value>Exit</value>
-  </data>
-  <data name="ContextMenu_UpdateCheck" xml:space="preserve">
-    <value>Kontrollera ny version vid start</value>
   </data>
   <data name="ToolTip_NoController" xml:space="preserve">
     <value>Ingen handkontroll detekterad</value>
@@ -194,12 +185,6 @@
   </data>
   <data name="ContextMenu_LowBatteryWarningSound_Loop_Enabled" xml:space="preserve">
     <value>Repetera (Loopa)</value>
-  </data>
-  <data name="ContextMenu_MinorUpdateCheck" xml:space="preserve">
-    <value>Sök efter mindre uppdateringar (nya språk)</value>
-  </data>
-  <data name="ContextMenu_UpdateCheckHeader" xml:space="preserve">
-    <value>Kontrollera uppdateringar</value>
   </data>
   <data name="NewMinorVersionAvailable_Body" xml:space="preserve">
     <value>En ny mindre uppdatering för {0} är tillgänglig. Vill du gå till hemsidan?</value>

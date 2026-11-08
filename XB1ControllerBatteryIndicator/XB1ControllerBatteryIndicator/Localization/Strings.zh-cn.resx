@@ -117,20 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NewVersionAvailable_Title" xml:space="preserve">
-    <value>已发现新版本</value>
-  </data>
-  <data name="NewVersionAvailable_Body" xml:space="preserve">
-    <value>已有 {0} 的新的更新，你想要打开主页吗？</value>
-  </data>
   <data name="ContextMenu_AutoStart" xml:space="preserve">
     <value>和Windows一起启动</value>
   </data>
   <data name="ContextMenu_Exit" xml:space="preserve">
     <value>退出</value>
-  </data>
-  <data name="ContextMenu_UpdateCheck" xml:space="preserve">
-    <value>在启动时检测新版本</value>
   </data>
   <data name="ToolTip_NoController" xml:space="preserve">
     <value>未发现控制器</value>

@@ -117,20 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NewVersionAvailable_Title" xml:space="preserve">
-    <value>Nouvelle version disponible</value>
-  </data>
-  <data name="NewVersionAvailable_Body" xml:space="preserve">
-    <value>Une nouvelle version de {0} est disponible. Voulez-vous ouvrir la page d'accueil ?</value>
-  </data>
   <data name="ContextMenu_AutoStart" xml:space="preserve">
     <value>Démarrer avec Windows</value>
   </data>
   <data name="ContextMenu_Exit" xml:space="preserve">
     <value>Quitter</value>
-  </data>
-  <data name="ContextMenu_UpdateCheck" xml:space="preserve">
-    <value>Vérifier si une nouvelle version est disponible au démarrage</value>
   </data>
   <data name="ToolTip_NoController" xml:space="preserve">
     <value>Aucune manette détectée</value>

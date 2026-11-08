@@ -30,7 +30,6 @@
         -->
         <ContextMenu x:Shared="false" x:Key="MainSysTrayMenu">
             <MenuItem x:Name="AutoStart" Header="{my:Localization ContextMenu_AutoStart}" IsCheckable="True" Click="AutoStart_Click" IsChecked="{my:SettingBinding Path=AutoStart}" />
-            <MenuItem x:Name="UpdateCheck" Header="{my:Localization ContextMenu_UpdateCheck}" IsCheckable="True" Click="Update_Click" IsChecked="{my:SettingBinding Path=UpdateCheck}" />
             <MenuItem Header="{my:Localization ContextMenu_Language}" IsCheckable="False" ItemsSource="{Binding Path=AvailableLanguages}" DisplayMemberPath="DisplayName" Click="LanguageItem_OnClick">
                 <MenuItem.ItemContainerStyle>
                     <Style TargetType="MenuItem">

@@ -151,15 +151,6 @@ namespace XB1ControllerBatteryIndicator.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check for new version on start.
-        /// </summary>
-        public static string ContextMenu_UpdateCheck {
-            get {
-                return ResourceManager.GetString("ContextMenu_UpdateCheck", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Four.
         /// </summary>
         public static string ControllerIndex_Four {
@@ -192,24 +183,6 @@ namespace XB1ControllerBatteryIndicator.Localization {
         public static string ControllerIndex_Two {
             get {
                 return ResourceManager.GetString("ControllerIndex_Two", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to A new version of {0} is available. Do you want to open the Homepage?.
-        /// </summary>
-        public static string NewVersionAvailable_Body {
-            get {
-                return ResourceManager.GetString("NewVersionAvailable_Body", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New version available.
-        /// </summary>
-        public static string NewVersionAvailable_Title {
-            get {
-                return ResourceManager.GetString("NewVersionAvailable_Title", resourceCulture);
             }
         }
         
