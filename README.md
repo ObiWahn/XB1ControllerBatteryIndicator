@@ -15,6 +15,16 @@
 > - **Fewer third-party dependencies.** The unmaintained `SharpDX.XInput` (archived since 2019) and
 >   the community repackage `Microsoft-WindowsAPICodePack-Shell` were replaced by small amounts of
 >   own interop code that call `xinput1_4.dll` and the Windows property system directly.
+> - **Less frequent controller checks.** Controllers are checked every 20 minutes instead of every few
+>   seconds. Enable "Fast check" in the tray menu to check every 5 seconds, or left-click the tray
+>   icon to check right away, e.g. after switching a controller on.
+> - **New tray menu options:** warn at "Low" instead of only at "Empty" battery level, override the
+>   taskbar theme used for the icon colour, and hide the icon while no controller is connected.
+> - **Windows warning sound.** The low battery sound is the "Exclamation" sound of the Windows sound
+>   scheme; picking a custom WAV file is no longer supported.
+> - **Bug fixes in the polling loop.** Warnings are tracked per controller (all of them, not only the
+>   one shown), the warning sound plays again each time a battery reaches the warning level, and an
+>   error can no longer make the loop spin at full CPU load.
 
 A tray application that shows a battery indicator for an Xbox-ish controller and gives a notification when the battery level drops to (almost) empty. 
 
@@ -46,7 +56,7 @@ Note that these controllers will **only work when you connect them via a dongle 
 
 Currently known issues/limitations:
 * Controllers connected via Bluetooth won't report any or a completely wrong battery level. This seems to be an issue with Microsofts BT implementation and I can't do anything about it. See Issue [#49](https://github.com/NiyaShy/XB1ControllerBatteryIndicator/issues/49) for details.
-* initial recognition of a newly connected controller can take a while. It will be displayed as "waiting for battery level data" at first but should switch to battery level after ~10 seconds and a button press. (This might be a limitation of the XInput API.)
+* initial recognition of a newly connected controller can take a while. It will be displayed as "waiting for battery level data" at first but should switch to battery level after ~10 seconds and a button press. (This might be a limitation of the XInput API.) Without "Fast check", the battery level only shows up at the next check; left-click the tray icon to check right away.
 
 **[You can download the latest version here](../../releases).**  
 Some additional details about how it works and what it shows can be found on the [wiki page](https://github.com/NiyaShy/XB1ControllerBatteryIndicator/wiki).  
