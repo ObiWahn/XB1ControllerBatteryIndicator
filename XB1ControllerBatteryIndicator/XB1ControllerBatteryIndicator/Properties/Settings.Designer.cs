@@ -49,18 +49,6 @@ namespace XB1ControllerBatteryIndicator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string wavFile {
-            get {
-                return ((string)(this["wavFile"]));
-            }
-            set {
-                this["wavFile"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool LowBatteryWarningSound_Enabled {
             get {

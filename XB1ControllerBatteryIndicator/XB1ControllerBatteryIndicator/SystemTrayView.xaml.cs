@@ -12,8 +12,6 @@ namespace XB1ControllerBatteryIndicator
     /// </summary>
     public partial class SystemTrayView : Window
     {
-        private SystemTrayViewModel ViewModel => DataContext as SystemTrayViewModel;
-
         public SystemTrayView()
         {
             InitializeComponent();
@@ -54,40 +52,10 @@ namespace XB1ControllerBatteryIndicator
                 this.RemoveAutoStart();
             }
         }
-        //lowBatteryWarningSound_Enabled-checkbox was clicked
+        //lowBatteryWarningSound_Enabled-checkbox was clicked, its binding already changed the setting
         private void LowBatteryWarningSound_Enabled_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("LowBatteryWarningSound_Enabled_Click");
-
-            bool lowBatteryWarningSoundEnabled = !Properties.Settings.Default.LowBatteryWarningSound_Enabled;
-            if (lowBatteryWarningSoundEnabled == false)
-            {
-                var openWav = new OpenFileDialog
-                {
-                    DefaultExt = ".wav",
-                    Filter = "WAV audio (*.wav)|*.wav",
-                    InitialDirectory = "C:\\Windows\\media\\"
-                };
-                var wavResult = openWav.ShowDialog(Application.Current.MainWindow);
-                if (wavResult.GetValueOrDefault())
-                {
-                    Debug.WriteLine(openWav.FileName);
-                    Properties.Settings.Default.wavFile = openWav.FileName;
-                    Properties.Settings.Default.LowBatteryWarningSound_Enabled = true;
-                }
-                else
-                {
-                    Properties.Settings.Default.wavFile = string.Empty;
-                    Properties.Settings.Default.LowBatteryWarningSound_Enabled = false;
-                }
-            }
-            else
-            {
-                Properties.Settings.Default.wavFile = string.Empty;
-                Properties.Settings.Default.LowBatteryWarningSound_Enabled = false;
-            }
             Properties.Settings.Default.Save();
-            ViewModel.UpdateNotificationSound();
         }
         //lowBatteryWarningSound_Loop_Enabled-checkbox was clicked
         private void LowBatteryWarningSound_Loop_Enabled_Click(object sender, RoutedEventArgs e)

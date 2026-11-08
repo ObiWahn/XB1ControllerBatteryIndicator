@@ -40,13 +40,10 @@ namespace XB1ControllerBatteryIndicator
         private const string ThemeRegKeyPath = @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
         private const string ThemeRegValueName = "SystemUsesLightTheme";
 
-        private SoundPlayer _soundPlayer;
-
         public SystemTrayViewModel()
         {
             GetAvailableLanguages();
             TranslationManager.CurrentLanguageChangedEvent += (sender, args) => GetAvailableLanguages();
-            UpdateNotificationSound();
 
             ActiveIcon = $"Resources/battery_unknown{LightTheme()}.ico";
             numdict["One"] = 1;
@@ -205,17 +202,10 @@ namespace XB1ControllerBatteryIndicator
             }
         }
 
+        //uses the sound chosen for "Exclamation" in the Windows sound scheme
         private void PlayWarningSound()
         {
-            //Necessary to avoid crashing if the .wav file is missing
-            try
-            {
-                _soundPlayer?.Play();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
+            SystemSounds.Exclamation.Play();
         }
 
         //index of the next connected controller after current, -1 if none is connected
@@ -414,10 +404,6 @@ namespace XB1ControllerBatteryIndicator
             }
         }
 
-        public void UpdateNotificationSound()
-        {
-            _soundPlayer = File.Exists(Settings.Default.wavFile) ? new SoundPlayer(Settings.Default.wavFile) : null;
-        }
         public void WatchTheme()
         {
             var currentUser = WindowsIdentity.GetCurrent();
