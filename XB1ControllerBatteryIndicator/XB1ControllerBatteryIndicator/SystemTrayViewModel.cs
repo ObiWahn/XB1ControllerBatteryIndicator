@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Threading;
-using SharpDX.XInput;
 using Windows.UI.Notifications;
 using Windows.Data.Xml.Dom;
 using System.Collections.Generic;
@@ -12,8 +11,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Media;
 using XB1ControllerBatteryIndicator.ShellHelpers;
-using MS.WindowsAPICodePack.Internal;
-using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
 using XB1ControllerBatteryIndicator.Localization;
 using XB1ControllerBatteryIndicator.Properties;
 using System.Security.Principal;
@@ -198,7 +195,7 @@ namespace XB1ControllerBatteryIndicator
 
             using (PropVariant appId = new PropVariant(APP_ID))
             {
-                ErrorHelper.VerifySucceeded(newShortcutProperties.SetValue(SystemProperties.System.AppUserModel.ID, appId));
+                ErrorHelper.VerifySucceeded(newShortcutProperties.SetValue(PropertyKeys.AppUserModelId, appId));
                 ErrorHelper.VerifySucceeded(newShortcutProperties.Commit());
             }
 

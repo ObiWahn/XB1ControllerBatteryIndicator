@@ -12,6 +12,9 @@
 >   containing spaces cannot be misinterpreted.
 > - **Automated builds.** GitHub Actions builds the app on every push; tagged versions are published
 >   as Releases with a ready-to-run `.exe`.
+> - **Fewer third-party dependencies.** The unmaintained `SharpDX.XInput` (archived since 2019) and
+>   the community repackage `Microsoft-WindowsAPICodePack-Shell` were replaced by small amounts of
+>   own interop code that call `xinput1_4.dll` and the Windows property system directly.
 
 A tray application that shows a battery indicator for an Xbox-ish controller and gives a notification when the battery level drops to (almost) empty. 
 

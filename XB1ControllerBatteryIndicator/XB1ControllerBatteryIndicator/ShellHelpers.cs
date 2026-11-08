@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Text;
 using System.Runtime.InteropServices;
-using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
-using MS.WindowsAPICodePack.Internal;
 
 namespace XB1ControllerBatteryIndicator.ShellHelpers
 {
@@ -34,6 +32,61 @@ namespace XB1ControllerBatteryIndicator.ShellHelpers
         internal const string CShellLink = "00021401-0000-0000-C000-000000000046";
         internal const string IPersistFile = "0000010b-0000-0000-C000-000000000046";
         internal const string IPropertyStore = "886D8EEB-8CF2-4446-8D02-CDBA1DBDCF99";
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
+    internal struct PropertyKey
+    {
+        public Guid FormatId;
+        public Int32 PropertyId;
+
+        public PropertyKey(Guid formatId, Int32 propertyId)
+        {
+            FormatId = formatId;
+            PropertyId = propertyId;
+        }
+    }
+
+    internal static class PropertyKeys
+    {
+        //System.AppUserModel.ID, see propkey.h
+        internal static PropertyKey AppUserModelId { get; } =
+            new PropertyKey(new Guid("9F4C2855-9F79-4B39-A8D0-E1D42DE1D5F3"), 5);
+    }
+
+    //PROPVARIANT, only the string (VT_LPWSTR) case is needed
+    //a class is marshaled as a pointer to the struct, which is what IPropertyStore expects
+    [StructLayout(LayoutKind.Sequential)]
+    internal sealed class PropVariant : IDisposable
+    {
+        private const ushort VT_LPWSTR = 31;
+
+        private ushort valueType;
+        private ushort reserved1;
+        private ushort reserved2;
+        private ushort reserved3;
+        private IntPtr pointerValue;
+        //pads the union to its 16 bytes on x64 (DECIMAL, BLOB)
+        private IntPtr padding;
+
+        public PropVariant()
+        {
+        }
+
+        public PropVariant(string value)
+        {
+            valueType = VT_LPWSTR;
+            pointerValue = Marshal.StringToCoTaskMemUni(value);
+        }
+
+        //frees the string and resets the variant to VT_EMPTY
+        public void Dispose()
+        {
+            PropVariantClear(this);
+        }
+
+        [DllImport("ole32.dll")]
+        private static extern int PropVariantClear([In, Out] PropVariant pvar);
     }
 
     [ComImport,
