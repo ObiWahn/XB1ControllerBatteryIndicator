@@ -82,5 +82,17 @@ namespace XB1ControllerBatteryIndicator.Properties {
                 this["LowBatteryWarningSound_Loop_Enabled"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FastPolling {
+            get {
+                return ((bool)(this["FastPolling"]));
+            }
+            set {
+                this["FastPolling"] = value;
+            }
+        }
     }
 }

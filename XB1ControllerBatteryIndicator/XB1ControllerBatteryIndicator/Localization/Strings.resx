@@ -186,4 +186,7 @@
   <data name="ContextMenu_LowBatteryWarningSound_Loop_Enabled" xml:space="preserve">
     <value>Repeat on loop</value>
   </data>
+  <data name="ContextMenu_FastPolling" xml:space="preserve">
+    <value>Fast check (every 5 seconds)</value>
+  </data>
 </root>

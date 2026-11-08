@@ -115,6 +115,15 @@ namespace XB1ControllerBatteryIndicator.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fast check (every 5 seconds).
+        /// </summary>
+        public static string ContextMenu_FastPolling {
+            get {
+                return ResourceManager.GetString("ContextMenu_FastPolling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string ContextMenu_Language {

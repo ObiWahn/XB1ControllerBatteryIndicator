@@ -21,10 +21,21 @@ namespace XB1ControllerBatteryIndicator
     public class SystemTrayViewModel : Caliburn.Micro.Screen
     {
         private string _activeIcon;
-        private Controller _controller;
         private string _tooltipText;
         private const string APP_ID = "NiyaShy.XB1ControllerBatteryIndicator";
+        private const int DisplayIntervalMs = 5000;
+        private static readonly TimeSpan CheckInterval = TimeSpan.FromMinutes(20);
+        private static readonly TimeSpan FastCheckInterval = TimeSpan.FromSeconds(5);
+        private readonly AutoResetEvent _checkNow = new AutoResetEvent(false);
+        private readonly Controller[] _controllers =
+        {
+            new Controller(UserIndex.One), new Controller(UserIndex.Two), new Controller(UserIndex.Three),
+            new Controller(UserIndex.Four)
+        };
+        //result of the last check, same order as _controllers, null if not connected
+        private readonly BatteryInformation?[] _batteryInfo = new BatteryInformation?[4];
         private bool[] toast_shown = new bool[5];
+        private bool[] lowBatterySoundPlayed = new bool[5];
         private Dictionary<string, int> numdict = new Dictionary<string, int>();
         private const string ThemeRegKeyPath = @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
         private const string ThemeRegValueName = "SystemUsesLightTheme";
@@ -62,109 +73,188 @@ namespace XB1ControllerBatteryIndicator
 
         public ObservableCollection<CultureInfo> AvailableLanguages { get; } = new ObservableCollection<CultureInfo>();
 
+        //wakes up every few seconds to rotate the displayed controller, checks the controllers only when due
         private void RefreshControllerState()
         {
-            bool lowBatteryWarningSoundPlayed = false;
+            var nextCheck = DateTime.MinValue;
+            var displayIndex = -1;
 
-            while(true)
+            while (true)
             {
                 try
                 {
-                    //Initialize controllers
-                    var controllers = new[]
+                    var now = DateTime.UtcNow;
+                    if (now >= nextCheck)
                     {
-                    new Controller(UserIndex.One), new Controller(UserIndex.Two), new Controller(UserIndex.Three),
-                    new Controller(UserIndex.Four)
-                    };
-                    //Check if at least one is present
-                    _controller = controllers.FirstOrDefault(selectControler => selectControler.IsConnected);
-
-                    if (_controller != null)
-                    {
-                        //cycle through all recognized controllers
-                        foreach (var currentController in controllers)
-                        {
-                            var controllerIndexCaption = GetControllerIndexCaption(currentController.UserIndex);
-                            if (currentController.IsConnected)
-                            {
-                                var batteryInfo = currentController.GetBatteryInformation(BatteryDeviceType.Gamepad);
-                                //check if toast was already triggered and battery is no longer empty...
-                                if (batteryInfo.BatteryLevel != BatteryLevel.Empty)
-                                {
-                                    if (toast_shown[numdict[$"{currentController.UserIndex}"]] == true)
-                                    {
-                                        //...reset the notification
-                                        toast_shown[numdict[$"{currentController.UserIndex}"]] = false;
-                                        ToastNotificationManager.History.Remove($"Controller{currentController.UserIndex}", "ControllerToast", APP_ID);
-                                    }
-                                }
-                                //wired
-                                if (batteryInfo.BatteryType == BatteryType.Wired)
-                                {
-                                    TooltipText = string.Format(Strings.ToolTip_Wired, controllerIndexCaption);
-                                    ActiveIcon = $"Resources/battery_wired_{currentController.UserIndex.ToString().ToLower() + LightTheme()}.ico";
-                                }
-                                //"disconnected", a controller that was detected but hasn't sent battery data yet has this state
-                                else if (batteryInfo.BatteryType == BatteryType.Disconnected)
-                                {
-                                    TooltipText = string.Format(Strings.ToolTip_WaitingForData, controllerIndexCaption);
-                                    ActiveIcon = $"Resources/battery_disconnected_{currentController.UserIndex.ToString().ToLower() + LightTheme()}.ico";
-                                }
-                                //this state should never happen
-                                else if (batteryInfo.BatteryType == BatteryType.Unknown)
-                                {
-                                    TooltipText = string.Format(Strings.ToolTip_Unknown, controllerIndexCaption);
-                                    ActiveIcon = $"Resources/battery_disconnected_{currentController.UserIndex.ToString().ToLower() + LightTheme()}.ico";
-                                }
-                                //a battery level was detected
-                                else
-                                {
-                                    var batteryLevelCaption = GetBatteryLevelCaption(batteryInfo.BatteryLevel);
-                                    TooltipText = string.Format(Strings.ToolTip_Wireless, controllerIndexCaption, batteryLevelCaption);
-                                    ActiveIcon = $"Resources/battery_{batteryInfo.BatteryLevel.ToString().ToLower()}_{currentController.UserIndex.ToString().ToLower() + LightTheme()}.ico";
-                                    //when "empty" state is detected...
-                                    if (batteryInfo.BatteryLevel == BatteryLevel.Empty)
-                                    {
-                                        //check if toast (notification) for current controller was already triggered
-                                        if (toast_shown[numdict[$"{currentController.UserIndex}"]] == false)
-                                        {
-                                            //if not, trigger it
-                                            toast_shown[numdict[$"{currentController.UserIndex}"]] = true;
-                                            ShowToast(currentController.UserIndex);
-                                        }
-                                        //check if notification sound is enabled
-                                        if (Settings.Default.LowBatteryWarningSound_Enabled)
-                                        {
-                                            if (Settings.Default.LowBatteryWarningSound_Loop_Enabled || !lowBatteryWarningSoundPlayed)
-                                            {
-                                                //Necessary to avoid crashing if the .wav file is missing
-                                                try
-                                                {
-                                                    _soundPlayer?.Play();
-                                                }
-                                                catch (Exception ex)
-                                                {
-                                                    Debug.WriteLine(ex);
-                                                }
-                                                lowBatteryWarningSoundPlayed = true;
-                                            }
-                                        }
-                                    }
-                                }
-                                Thread.Sleep(5000);
-                            }
-                        }
+                        nextCheck = now + (Settings.Default.FastPolling ? FastCheckInterval : CheckInterval);
+                        CheckControllers();
                     }
-                    else
-                    {
-                        TooltipText = Strings.ToolTip_NoController;
-                        ActiveIcon = $"Resources/battery_unknown{LightTheme()}.ico";
-                    }
-                    Thread.Sleep(1000);
+                    displayIndex = NextConnectedIndex(displayIndex);
+                    ShowController(displayIndex);
+                    PlayLoopedWarningSound();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    Debug.WriteLine(ex);
                 }
+                //always wait, also after an error, so a persistent failure cannot spin the loop
+                if (_checkNow.WaitOne(DisplayIntervalMs))
+                {
+                    nextCheck = DateTime.MinValue;
+                }
+            }
+        }
+
+        //request a check right away instead of waiting for the next interval
+        public void CheckNow()
+        {
+            _checkNow.Set();
+        }
+
+        //the menu checkbox already changed the setting through its binding
+        public void FastPollingChanged()
+        {
+            Settings.Default.Save();
+            CheckNow();
+        }
+
+        private void CheckControllers()
+        {
+            for (int i = 0; i < _controllers.Length; i++)
+            {
+                var controller = _controllers[i];
+                BatteryInformation? batteryInfo = null;
+                if (controller.IsConnected)
+                {
+                    try
+                    {
+                        batteryInfo = controller.GetBatteryInformation(BatteryDeviceType.Gamepad);
+                    }
+                    catch (System.ComponentModel.Win32Exception ex)
+                    {
+                        //disconnected between the two calls
+                        Debug.WriteLine(ex);
+                    }
+                }
+                _batteryInfo[i] = batteryInfo;
+                UpdateWarning(controller.UserIndex, batteryInfo);
+            }
+        }
+
+        //show the toast and play the sound once when a controller reaches the warning level,
+        //reset both when it is above it again, wired or disconnected
+        private void UpdateWarning(UserIndex controllerIndex, BatteryInformation? batteryInfo)
+        {
+            int controllerId = numdict[$"{controllerIndex}"];
+            if (!IsBatteryWarning(batteryInfo))
+            {
+                lowBatterySoundPlayed[controllerId] = false;
+                if (toast_shown[controllerId])
+                {
+                    toast_shown[controllerId] = false;
+                    ToastNotificationManager.History.Remove($"Controller{controllerIndex}", "ControllerToast", APP_ID);
+                }
+                return;
+            }
+            //check if toast (notification) for this controller was already triggered
+            if (!toast_shown[controllerId])
+            {
+                toast_shown[controllerId] = true;
+                ShowToast(controllerIndex);
+            }
+            //with "repeat on loop" the sound is played by PlayLoopedWarningSound instead
+            if (Settings.Default.LowBatteryWarningSound_Enabled && !Settings.Default.LowBatteryWarningSound_Loop_Enabled &&
+                !lowBatterySoundPlayed[controllerId])
+            {
+                lowBatterySoundPlayed[controllerId] = true;
+                PlayWarningSound();
+            }
+        }
+
+        private static bool IsBatteryWarning(BatteryInformation? batteryInfo)
+        {
+            if (batteryInfo == null)
+            {
+                return false;
+            }
+            //wired controllers and controllers still waiting for data report no meaningful level
+            var batteryType = batteryInfo.Value.BatteryType;
+            bool onBattery = batteryType == BatteryType.Alkaline || batteryType == BatteryType.Nimh;
+            return onBattery && batteryInfo.Value.BatteryLevel == BatteryLevel.Empty;
+        }
+
+        private void PlayLoopedWarningSound()
+        {
+            if (Settings.Default.LowBatteryWarningSound_Enabled && Settings.Default.LowBatteryWarningSound_Loop_Enabled &&
+                _batteryInfo.Any(IsBatteryWarning))
+            {
+                PlayWarningSound();
+            }
+        }
+
+        private void PlayWarningSound()
+        {
+            //Necessary to avoid crashing if the .wav file is missing
+            try
+            {
+                _soundPlayer?.Play();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+        }
+
+        //index of the next connected controller after current, -1 if none is connected
+        private int NextConnectedIndex(int current)
+        {
+            for (int offset = 1; offset <= _batteryInfo.Length; offset++)
+            {
+                int candidate = (current + offset) % _batteryInfo.Length;
+                if (_batteryInfo[candidate] != null)
+                {
+                    return candidate;
+                }
+            }
+            return -1;
+        }
+
+        private void ShowController(int index)
+        {
+            if (index < 0)
+            {
+                TooltipText = Strings.ToolTip_NoController;
+                ActiveIcon = $"Resources/battery_unknown{LightTheme()}.ico";
+                return;
+            }
+
+            var controllerIndex = _controllers[index].UserIndex;
+            var batteryInfo = _batteryInfo[index].Value;
+            var controllerIndexCaption = GetControllerIndexCaption(controllerIndex);
+            //wired
+            if (batteryInfo.BatteryType == BatteryType.Wired)
+            {
+                TooltipText = string.Format(Strings.ToolTip_Wired, controllerIndexCaption);
+                ActiveIcon = $"Resources/battery_wired_{controllerIndex.ToString().ToLower() + LightTheme()}.ico";
+            }
+            //"disconnected", a controller that was detected but hasn't sent battery data yet has this state
+            else if (batteryInfo.BatteryType == BatteryType.Disconnected)
+            {
+                TooltipText = string.Format(Strings.ToolTip_WaitingForData, controllerIndexCaption);
+                ActiveIcon = $"Resources/battery_disconnected_{controllerIndex.ToString().ToLower() + LightTheme()}.ico";
+            }
+            //this state should never happen
+            else if (batteryInfo.BatteryType == BatteryType.Unknown)
+            {
+                TooltipText = string.Format(Strings.ToolTip_Unknown, controllerIndexCaption);
+                ActiveIcon = $"Resources/battery_disconnected_{controllerIndex.ToString().ToLower() + LightTheme()}.ico";
+            }
+            //a battery level was detected
+            else
+            {
+                var batteryLevelCaption = GetBatteryLevelCaption(batteryInfo.BatteryLevel);
+                TooltipText = string.Format(Strings.ToolTip_Wireless, controllerIndexCaption, batteryLevelCaption);
+                ActiveIcon = $"Resources/battery_{batteryInfo.BatteryLevel.ToString().ToLower()}_{controllerIndex.ToString().ToLower() + LightTheme()}.ico";
             }
         }
 
