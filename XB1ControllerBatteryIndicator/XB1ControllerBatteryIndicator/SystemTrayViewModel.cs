@@ -39,6 +39,9 @@ namespace XB1ControllerBatteryIndicator
         private Dictionary<string, int> numdict = new Dictionary<string, int>();
         private const string ThemeRegKeyPath = @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
         private const string ThemeRegValueName = "SystemUsesLightTheme";
+        private const int ThemeModeAuto = 0;
+        private const int ThemeModeLight = 1;
+        private const int ThemeModeDark = 2;
 
         public SystemTrayViewModel()
         {
@@ -118,6 +121,20 @@ namespace XB1ControllerBatteryIndicator
             Settings.Default.Save();
             NotifyOfPropertyChange(nameof(IsWarningThresholdEmpty));
             NotifyOfPropertyChange(nameof(IsWarningThresholdLow));
+            CheckNow();
+        }
+
+        public bool IsThemeAuto => Settings.Default.ThemeMode == ThemeModeAuto;
+        public bool IsThemeLight => Settings.Default.ThemeMode == ThemeModeLight;
+        public bool IsThemeDark => Settings.Default.ThemeMode == ThemeModeDark;
+
+        public void SetThemeMode(int themeMode)
+        {
+            Settings.Default.ThemeMode = themeMode;
+            Settings.Default.Save();
+            NotifyOfPropertyChange(nameof(IsThemeAuto));
+            NotifyOfPropertyChange(nameof(IsThemeLight));
+            NotifyOfPropertyChange(nameof(IsThemeDark));
             CheckNow();
         }
 
@@ -434,8 +451,17 @@ namespace XB1ControllerBatteryIndicator
             LightTheme();
         }
 
+        //icon file suffix: "-black" icons for a light taskbar
         private string LightTheme()
         {
+            if (Settings.Default.ThemeMode == ThemeModeLight)
+            {
+                return "-black";
+            }
+            if (Settings.Default.ThemeMode == ThemeModeDark)
+            {
+                return "";
+            }
             using (RegistryKey key = Registry.CurrentUser.OpenSubKey(ThemeRegKeyPath))
             {
                 object registryValueObject = key?.GetValue(ThemeRegValueName);

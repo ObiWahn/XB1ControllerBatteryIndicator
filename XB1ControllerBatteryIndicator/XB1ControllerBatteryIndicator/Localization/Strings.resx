@@ -195,4 +195,16 @@
   <data name="Toast_TextLow" xml:space="preserve">
     <value>Battery of controller {0} is low.</value>
   </data>
+  <data name="ContextMenu_Theme" xml:space="preserve">
+    <value>Taskbar theme</value>
+  </data>
+  <data name="ContextMenu_Theme_Auto" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="ContextMenu_Theme_Light" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="ContextMenu_Theme_Dark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
 </root>

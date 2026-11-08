@@ -160,6 +160,42 @@ namespace XB1ControllerBatteryIndicator.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Taskbar theme.
+        /// </summary>
+        public static string ContextMenu_Theme {
+            get {
+                return ResourceManager.GetString("ContextMenu_Theme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatic.
+        /// </summary>
+        public static string ContextMenu_Theme_Auto {
+            get {
+                return ResourceManager.GetString("ContextMenu_Theme_Auto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark.
+        /// </summary>
+        public static string ContextMenu_Theme_Dark {
+            get {
+                return ResourceManager.GetString("ContextMenu_Theme_Dark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light.
+        /// </summary>
+        public static string ContextMenu_Theme_Light {
+            get {
+                return ResourceManager.GetString("ContextMenu_Theme_Light", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Warn at battery level.
         /// </summary>
         public static string ContextMenu_WarningThreshold {

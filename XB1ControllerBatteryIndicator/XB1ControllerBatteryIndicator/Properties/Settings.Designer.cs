@@ -94,5 +94,17 @@ namespace XB1ControllerBatteryIndicator.Properties {
                 this["LowBatteryWarningThreshold"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ThemeMode {
+            get {
+                return ((int)(this["ThemeMode"]));
+            }
+            set {
+                this["ThemeMode"] = value;
+            }
+        }
     }
 }
