@@ -56,6 +56,7 @@
                 <MenuItem Header="{my:Localization ContextMenu_Theme_Light}" IsChecked="{Binding IsThemeLight, Mode=OneWay}" cal:Message.Attach="SetThemeMode(1)" />
                 <MenuItem Header="{my:Localization ContextMenu_Theme_Dark}" IsChecked="{Binding IsThemeDark, Mode=OneWay}" cal:Message.Attach="SetThemeMode(2)" />
             </MenuItem>
+            <MenuItem Header="{my:Localization ContextMenu_HideWhenNoController}" IsCheckable="True" IsChecked="{my:SettingBinding Path=HideWhenNoController}" cal:Message.Attach="HideWhenNoControllerChanged" />
             <MenuItem Header="{my:Localization ContextMenu_FastPolling}" IsCheckable="True" IsChecked="{my:SettingBinding Path=FastPolling}" cal:Message.Attach="FastPollingChanged" />
             <Separator/>
             <MenuItem Header="{my:Localization ContextMenu_Exit}" cal:Message.Attach="ExitApplication" />
@@ -65,6 +66,7 @@
         <tb:TaskbarIcon x:Key="SystemTrayIcon"
                         IconSource="{Binding Path=ActiveIcon, Mode=OneWay}"
                         ToolTipText="{Binding Path=TooltipText, Mode=OneWay}"
+                        Visibility="{Binding Path=TrayIconVisibility, Mode=OneWay}"
                         ContextMenu="{StaticResource MainSysTrayMenu}"
                         cal:Message.Attach="[Event TrayLeftMouseUp] = [Action CheckNow]" />
     </Window.Resources>

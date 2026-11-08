@@ -106,5 +106,17 @@ namespace XB1ControllerBatteryIndicator.Properties {
                 this["ThemeMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HideWhenNoController {
+            get {
+                return ((bool)(this["HideWhenNoController"]));
+            }
+            set {
+                this["HideWhenNoController"] = value;
+            }
+        }
     }
 }

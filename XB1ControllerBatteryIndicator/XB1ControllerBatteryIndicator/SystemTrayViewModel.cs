@@ -22,6 +22,7 @@ namespace XB1ControllerBatteryIndicator
     {
         private string _activeIcon;
         private string _tooltipText;
+        private System.Windows.Visibility _trayIconVisibility = System.Windows.Visibility.Visible;
         private const string APP_ID = "NiyaShy.XB1ControllerBatteryIndicator";
         private const int DisplayIntervalMs = 5000;
         private static readonly TimeSpan CheckInterval = TimeSpan.FromMinutes(20);
@@ -69,6 +70,12 @@ namespace XB1ControllerBatteryIndicator
         {
             get { return _tooltipText; }
             set { Set(ref _tooltipText, value); }
+        }
+
+        public System.Windows.Visibility TrayIconVisibility
+        {
+            get { return _trayIconVisibility; }
+            set { Set(ref _trayIconVisibility, value); }
         }
 
         public ObservableCollection<CultureInfo> AvailableLanguages { get; } = new ObservableCollection<CultureInfo>();
@@ -140,6 +147,13 @@ namespace XB1ControllerBatteryIndicator
 
         //the menu checkbox already changed the setting through its binding
         public void FastPollingChanged()
+        {
+            Settings.Default.Save();
+            CheckNow();
+        }
+
+        //the menu checkbox already changed the setting through its binding
+        public void HideWhenNoControllerChanged()
         {
             Settings.Default.Save();
             CheckNow();
@@ -245,8 +259,12 @@ namespace XB1ControllerBatteryIndicator
             {
                 TooltipText = Strings.ToolTip_NoController;
                 ActiveIcon = $"Resources/battery_unknown{LightTheme()}.ico";
+                TrayIconVisibility = Settings.Default.HideWhenNoController
+                    ? System.Windows.Visibility.Collapsed
+                    : System.Windows.Visibility.Visible;
                 return;
             }
+            TrayIconVisibility = System.Windows.Visibility.Visible;
 
             var controllerIndex = _controllers[index].UserIndex;
             var batteryInfo = _batteryInfo[index].Value;

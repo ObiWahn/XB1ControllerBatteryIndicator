@@ -207,4 +207,7 @@
   <data name="ContextMenu_Theme_Dark" xml:space="preserve">
     <value>Dark</value>
   </data>
+  <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
+    <value>Hide icon when no controller is connected</value>
+  </data>
 </root>

@@ -124,6 +124,15 @@ namespace XB1ControllerBatteryIndicator.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hide icon when no controller is connected.
+        /// </summary>
+        public static string ContextMenu_HideWhenNoController {
+            get {
+                return ResourceManager.GetString("ContextMenu_HideWhenNoController", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string ContextMenu_Language {
