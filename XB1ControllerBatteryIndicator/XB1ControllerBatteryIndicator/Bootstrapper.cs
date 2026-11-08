@@ -1,29 +1,45 @@
-﻿using System.Windows;
-using Autofac;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
 using Caliburn.Micro;
-using Caliburn.Micro.Autofac;
 
 namespace XB1ControllerBatteryIndicator
 {
-    internal class Bootstrapper : AutofacBootstrapper<SystemTrayViewModel>
+    internal class Bootstrapper : BootstrapperBase
     {
+        private readonly SimpleContainer _container = new SimpleContainer();
+
         public Bootstrapper()
         {
             Initialize();
         }
 
-        protected override void ConfigureContainer(ContainerBuilder builder)
+        protected override void Configure()
         {
-            base.ConfigureContainer(builder);
-            builder.RegisterInstance<IWindowManager>(new WindowManager());
-            builder.RegisterType<SystemTrayViewModel>();
+            _container.Singleton<IWindowManager, WindowManager>();
+            _container.PerRequest<SystemTrayViewModel>();
         }
 
-        protected override void OnStartup(object sender, StartupEventArgs e)
+        protected override object GetInstance(Type service, string key)
+        {
+            return _container.GetInstance(service, key);
+        }
+
+        protected override IEnumerable<object> GetAllInstances(Type service)
+        {
+            return _container.GetAllInstances(service);
+        }
+
+        protected override void BuildUp(object instance)
+        {
+            _container.BuildUp(instance);
+        }
+
+        protected override async void OnStartup(object sender, StartupEventArgs e)
         {
             base.OnStartup(sender, e);
 
-            DisplayRootViewFor<SystemTrayViewModel>();
+            await DisplayRootViewForAsync<SystemTrayViewModel>();
         }
     }
 }
