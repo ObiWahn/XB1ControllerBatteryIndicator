@@ -309,8 +309,8 @@ namespace XB1ControllerBatteryIndicator
                 TooltipText = string.Format(Strings.ToolTip_WaitingForData, controllerIndexCaption);
                 ActiveIcon = $"Resources/battery_disconnected_{controllerIndex.ToString().ToLower() + LightTheme()}.ico";
             }
-            //this state should never happen
-            else if (batteryInfo.BatteryType == BatteryType.Unknown)
+            //this state should never happen, neither should a level xinput.h doesn't define
+            else if (batteryInfo.BatteryType == BatteryType.Unknown || !Enum.IsDefined(batteryInfo.BatteryLevel))
             {
                 TooltipText = string.Format(Strings.ToolTip_Unknown, controllerIndexCaption);
                 ActiveIcon = $"Resources/battery_disconnected_{controllerIndex.ToString().ToLower() + LightTheme()}.ico";
