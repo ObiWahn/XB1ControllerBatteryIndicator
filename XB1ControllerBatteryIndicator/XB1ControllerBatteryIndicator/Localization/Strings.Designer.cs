@@ -178,6 +178,42 @@ namespace XB1ControllerBatteryIndicator.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show controllers.
+        /// </summary>
+        public static string ContextMenu_ShowControllers {
+            get {
+                return ResourceManager.GetString("ContextMenu_ShowControllers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wired.
+        /// </summary>
+        public static string ContextMenu_ShowWired {
+            get {
+                return ResourceManager.GetString("ContextMenu_ShowWired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wireless with battery level.
+        /// </summary>
+        public static string ContextMenu_ShowWirelessKnownLevel {
+            get {
+                return ResourceManager.GetString("ContextMenu_ShowWirelessKnownLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wireless, waiting for battery level.
+        /// </summary>
+        public static string ContextMenu_ShowWirelessUnknownLevel {
+            get {
+                return ResourceManager.GetString("ContextMenu_ShowWirelessUnknownLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Taskbar theme.
         /// </summary>
         public static string ContextMenu_Theme {

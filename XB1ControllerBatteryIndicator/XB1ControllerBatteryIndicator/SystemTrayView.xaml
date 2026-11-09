@@ -56,6 +56,11 @@
                 <MenuItem Header="{my:Localization ContextMenu_Theme_Light}" IsChecked="{Binding IsThemeLight, Mode=OneWay}" cal:Message.Attach="SetThemeMode(1)" />
                 <MenuItem Header="{my:Localization ContextMenu_Theme_Dark}" IsChecked="{Binding IsThemeDark, Mode=OneWay}" cal:Message.Attach="SetThemeMode(2)" />
             </MenuItem>
+            <MenuItem Header="{my:Localization ContextMenu_ShowControllers}">
+                <MenuItem Header="{my:Localization ContextMenu_ShowWirelessKnownLevel}" IsCheckable="True" IsChecked="{my:SettingBinding Path=ShowWirelessKnownLevel}" cal:Message.Attach="ShownControllersChanged" />
+                <MenuItem Header="{my:Localization ContextMenu_ShowWirelessUnknownLevel}" IsCheckable="True" IsChecked="{my:SettingBinding Path=ShowWirelessUnknownLevel}" cal:Message.Attach="ShownControllersChanged" />
+                <MenuItem Header="{my:Localization ContextMenu_ShowWired}" IsCheckable="True" IsChecked="{my:SettingBinding Path=ShowWired}" cal:Message.Attach="ShownControllersChanged" />
+            </MenuItem>
             <MenuItem Header="{my:Localization ContextMenu_HideWhenNoController}" IsCheckable="True" IsChecked="{my:SettingBinding Path=HideWhenNoController}" cal:Message.Attach="HideWhenNoControllerChanged" />
             <MenuItem Header="{my:Localization ContextMenu_FastPolling}" IsCheckable="True" IsChecked="{my:SettingBinding Path=FastPolling}" cal:Message.Attach="FastPollingChanged" />
             <MenuItem Header="{my:Localization ContextMenu_OpenLogFolder}" cal:Message.Attach="OpenLogFolder" />

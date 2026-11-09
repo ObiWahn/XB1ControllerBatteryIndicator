@@ -152,6 +152,13 @@ namespace XB1ControllerBatteryIndicator
             CheckNow();
         }
 
+        //a "Show controllers" checkbox already changed the setting through its binding
+        public void ShownControllersChanged()
+        {
+            Settings.Default.Save();
+            CheckNow();
+        }
+
         //the menu checkbox already changed the setting through its binding
         public void HideWhenNoControllerChanged()
         {
@@ -245,18 +252,33 @@ namespace XB1ControllerBatteryIndicator
             SystemSounds.Exclamation.Play();
         }
 
-        //index of the next connected controller after current, -1 if none is connected
+        //index of the next connected controller after current that is not hidden by the "Show controllers" menu,
+        //-1 if there is none
         private int NextConnectedIndex(int current)
         {
             for (int offset = 1; offset <= _batteryInfo.Length; offset++)
             {
                 int candidate = (current + offset) % _batteryInfo.Length;
-                if (_batteryInfo[candidate] != null)
+                if (_batteryInfo[candidate] != null && IsShown(_batteryInfo[candidate].Value))
                 {
                     return candidate;
                 }
             }
             return -1;
+        }
+
+        private static bool IsShown(BatteryInformation batteryInfo)
+        {
+            switch (batteryInfo.BatteryType)
+            {
+                case BatteryType.Wired:
+                    return Settings.Default.ShowWired;
+                case BatteryType.Alkaline:
+                case BatteryType.Nimh:
+                    return Settings.Default.ShowWirelessKnownLevel;
+                default:
+                    return Settings.Default.ShowWirelessUnknownLevel;
+            }
         }
 
         private void ShowController(int index)

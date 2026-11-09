@@ -130,5 +130,41 @@ namespace XB1ControllerBatteryIndicator.Properties {
                 this["UpgradeRequired"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowWirelessKnownLevel {
+            get {
+                return ((bool)(this["ShowWirelessKnownLevel"]));
+            }
+            set {
+                this["ShowWirelessKnownLevel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowWirelessUnknownLevel {
+            get {
+                return ((bool)(this["ShowWirelessUnknownLevel"]));
+            }
+            set {
+                this["ShowWirelessUnknownLevel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowWired {
+            get {
+                return ((bool)(this["ShowWired"]));
+            }
+            set {
+                this["ShowWired"] = value;
+            }
+        }
     }
 }

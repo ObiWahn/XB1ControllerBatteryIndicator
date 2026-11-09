@@ -213,4 +213,16 @@
   <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
     <value>Open log folder</value>
   </data>
+  <data name="ContextMenu_ShowControllers" xml:space="preserve">
+    <value>Show controllers</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessKnownLevel" xml:space="preserve">
+    <value>Wireless with battery level</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessUnknownLevel" xml:space="preserve">
+    <value>Wireless, waiting for battery level</value>
+  </data>
+  <data name="ContextMenu_ShowWired" xml:space="preserve">
+    <value>Wired</value>
+  </data>
 </root>
