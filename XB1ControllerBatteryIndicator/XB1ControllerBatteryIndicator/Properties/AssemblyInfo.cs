@@ -5,7 +5,10 @@ using System.Windows;
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
 
-[assembly: ComVisible(true)]
+[assembly: ComVisible(false)]
+
+//native DLLs are loaded from System32 only, so a DLL next to the exe (e.g. in Downloads) is never picked up
+[assembly: DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located

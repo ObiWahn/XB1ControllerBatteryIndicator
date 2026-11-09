@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Xml;
 using System.Xml.Linq;
 using XB1ControllerBatteryIndicator.Properties;
 
@@ -31,7 +32,7 @@ namespace XB1ControllerBatteryIndicator
                 var previousConfigPath = FindMostRecentUserConfig(currentConfigPath);
                 if (previousConfigPath != null)
                 {
-                    AppLogger.Info($"Importing settings from {WithoutUserProfile(previousConfigPath)}.");
+                    AppLogger.Info($"Importing settings from {previousConfigPath}.");
                     Import(settings, previousConfigPath);
                 }
             }
@@ -42,15 +43,6 @@ namespace XB1ControllerBatteryIndicator
 
             settings.UpgradeRequired = false;
             settings.Save();
-        }
-
-        //the log may be attached to a bug report, so it shouldn't contain the user name from the profile path
-        private static string WithoutUserProfile(string path)
-        {
-            var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            return path.StartsWith(localAppData, StringComparison.OrdinalIgnoreCase)
-                ? "%LOCALAPPDATA%" + path.Substring(localAppData.Length)
-                : path;
         }
 
         //returns null if there is none or the current build's user.config is already the most recent one
@@ -83,7 +75,12 @@ namespace XB1ControllerBatteryIndicator
         //only settings this build knows are taken over, values that don't convert to the setting's type are skipped
         private static void Import(Settings settings, string configPath)
         {
-            var section = XDocument.Load(configPath).Root?.Element("userSettings")?.Element(SettingsSectionName);
+            //user.config never has a DTD, refusing one rules out entity expansion
+            XElement section;
+            using (var reader = XmlReader.Create(configPath, new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit }))
+            {
+                section = XDocument.Load(reader).Root?.Element("userSettings")?.Element(SettingsSectionName);
+            }
             if (section == null)
             {
                 return;

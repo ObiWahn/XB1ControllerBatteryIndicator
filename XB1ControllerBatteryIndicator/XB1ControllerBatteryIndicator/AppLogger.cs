@@ -41,7 +41,7 @@ namespace XB1ControllerBatteryIndicator
                     }
 
                     var line = string.Format(CultureInfo.InvariantCulture, "[{0:yyyy-MM-dd HH:mm:ss.fff}] [{1}] {2}{3}",
-                        DateTime.Now, level, message, Environment.NewLine);
+                        DateTime.Now, level, WithoutUserProfile(message), Environment.NewLine);
                     File.AppendAllText(FilePath, line, Encoding.UTF8);
                 }
             }
@@ -49,6 +49,25 @@ namespace XB1ControllerBatteryIndicator
             {
                 //diagnostics must never affect the tray application itself
             }
+        }
+
+        //the log may be attached to a bug report, so it shouldn't contain the user name from a profile path, also not
+        //inside exception messages. LOCALAPPDATA lies inside USERPROFILE, so it is replaced first
+        private static string WithoutUserProfile(string message)
+        {
+            foreach (var (folder, variable) in new[]
+                     {
+                         (Environment.SpecialFolder.LocalApplicationData, "%LOCALAPPDATA%"),
+                         (Environment.SpecialFolder.UserProfile, "%USERPROFILE%"),
+                     })
+            {
+                var path = Environment.GetFolderPath(folder);
+                if (path.Length > 0)
+                {
+                    message = message.Replace(path, variable, StringComparison.OrdinalIgnoreCase);
+                }
+            }
+            return message;
         }
     }
 }
