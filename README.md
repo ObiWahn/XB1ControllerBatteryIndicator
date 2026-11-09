@@ -63,6 +63,13 @@ It was originally written for the XBox One controller since Microsoft dropped al
 **Download link for a "ready to run" version at the bottom of this page(or under "Releases" in the side bar)!**  
 (The green download button at the top is for the source code package)
 
+**Verifying a download.** Each release has a `XB1ControllerBatteryIndicator.exe.sha256` file next to the
+`.exe`. In PowerShell, `(Get-FileHash XB1ControllerBatteryIndicator.exe).Hash` must print the same hash
+(ignoring case). The `.exe` also has a build provenance attestation, which shows it was built from this
+repository by GitHub Actions. Check it with the [GitHub CLI](https://cli.github.com/):
+`gh attestation verify XB1ControllerBatteryIndicator.exe --repo <owner>/<repo>`, replacing
+`<owner>/<repo>` with this repository's path.
+
 When more than one controller is present, the tray icon will cycle through the status display every 5 seconds.
 
 ![Tray icon](https://i.imgur.com/rxWAsu8.gif "Tray icon cycling through multiple controllers")
