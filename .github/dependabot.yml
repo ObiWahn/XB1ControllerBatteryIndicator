@@ -1,0 +1,13 @@
+version: 2
+updates:
+  # updates packages.lock.json together with the csproj, CI restores in locked mode
+  - package-ecosystem: nuget
+    directory: /XB1ControllerBatteryIndicator
+    schedule:
+      interval: weekly
+
+  # the actions are pinned to commit SHAs, Dependabot updates the SHA and the version comment
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
