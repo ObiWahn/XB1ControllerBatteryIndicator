@@ -37,6 +37,9 @@ namespace XB1ControllerBatteryIndicator
 
         protected override async void OnStartup(object sender, StartupEventArgs e)
         {
+            //before any view or view model reads the settings
+            SettingsMigration.Run();
+
             base.OnStartup(sender, e);
 
             await DisplayRootViewForAsync<SystemTrayViewModel>();

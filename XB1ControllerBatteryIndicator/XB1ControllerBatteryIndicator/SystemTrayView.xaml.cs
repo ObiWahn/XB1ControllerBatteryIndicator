@@ -19,6 +19,12 @@ namespace XB1ControllerBatteryIndicator
 
             var language = new CultureInfo(Properties.Settings.Default.Language);
             TranslationManager.CurrentLanguage = language;
+
+            //the exe may have moved since autostart was enabled, e.g. after an update
+            if (Properties.Settings.Default.AutoStart)
+            {
+                StartWithWindows();
+            }
         }
         RegistryKey autoStartKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
         private string appID = "XB1ControllerBatteryIndicator";
