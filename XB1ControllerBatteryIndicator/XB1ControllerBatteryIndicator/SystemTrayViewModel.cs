@@ -4,7 +4,6 @@ using Windows.UI.Notifications;
 using Windows.Data.Xml.Dom;
 using System.Collections.Generic;
 using System;
-using System.Management;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Diagnostics;
@@ -14,7 +13,6 @@ using System.Security;
 using XB1ControllerBatteryIndicator.ShellHelpers;
 using XB1ControllerBatteryIndicator.Localization;
 using XB1ControllerBatteryIndicator.Properties;
-using System.Security.Principal;
 using Microsoft.Win32;
 
 namespace XB1ControllerBatteryIndicator
@@ -438,36 +436,6 @@ namespace XB1ControllerBatteryIndicator
             {
                 AvailableLanguages.Add(language);
             }
-        }
-
-        public void WatchTheme()
-        {
-            var currentUser = WindowsIdentity.GetCurrent();
-            string query = string.Format(
-                CultureInfo.InvariantCulture,
-                @"SELECT * FROM RegistryValueChangeEvent WHERE Hive = 'HKEY_USERS' AND KeyPath = '{0}\\{1}' AND ValueName = '{2}'",
-                currentUser.User.Value,
-                ThemeRegKeyPath.Replace(@"\", @"\\"),
-                ThemeRegValueName);
-
-            try
-            {
-                var watcher = new ManagementEventWatcher(query);
-                watcher.EventArrived += (sender, args) =>
-                {
-                    LightTheme();
-                    
-                };
-
-                // Start listening for events
-                watcher.Start();
-            }
-            catch (Exception)
-            {
-                // This can fail on Windows 7
-            }
-
-            LightTheme();
         }
 
         //icon file suffix: "-black" icons for a light taskbar
