@@ -29,7 +29,7 @@
 >   its successor `H.NotifyIcon.Wpf`, which also shows the tooltip on Windows 11. The unused
 >   `System.Management` package was removed.
 > - **Settings are kept on update.** The first start of a new version takes over the settings of the
->   previous one, and the autostart entry is updated in case the program was moved.
+>   previous one, and the autostart entry is updated if the program it pointed to was moved or deleted.
 > - **Choose which controllers to show.** "Show controllers" in the tray menu hides wired controllers or
 >   wireless ones with or without a known battery level from the icon. Hidden controllers still warn
 >   about low batteries.

@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Windows.Data;
 using H.NotifyIcon;
 
@@ -32,11 +33,18 @@ namespace XB1ControllerBatteryIndicator
             }
             TranslationManager.CurrentLanguage = language;
 
-            //the exe may have moved since autostart was enabled, e.g. after an update
-            if (Properties.Settings.Default.AutoStart)
+            //the exe may have moved since autostart was enabled, e.g. after an update. Only repoint an entry whose exe
+            //is gone, so starting another copy once (e.g. from Downloads) doesn't make that copy the one started with Windows
+            if (Properties.Settings.Default.AutoStart && !AutoStartTargetExists())
             {
                 StartWithWindows();
             }
+        }
+
+        private bool AutoStartTargetExists()
+        {
+            var command = autoStartKey.GetValue(appID) as string;
+            return command != null && File.Exists(command.Trim('"'));
         }
         //CreateSubKey opens the key writable and creates it if it is missing, OpenSubKey would return null then
         RegistryKey autoStartKey = Registry.CurrentUser.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run");
