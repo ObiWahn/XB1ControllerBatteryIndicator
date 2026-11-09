@@ -58,6 +58,7 @@
             </MenuItem>
             <MenuItem Header="{my:Localization ContextMenu_HideWhenNoController}" IsCheckable="True" IsChecked="{my:SettingBinding Path=HideWhenNoController}" cal:Message.Attach="HideWhenNoControllerChanged" />
             <MenuItem Header="{my:Localization ContextMenu_FastPolling}" IsCheckable="True" IsChecked="{my:SettingBinding Path=FastPolling}" cal:Message.Attach="FastPollingChanged" />
+            <MenuItem Header="{my:Localization ContextMenu_OpenLogFolder}" cal:Message.Attach="OpenLogFolder" />
             <Separator/>
             <MenuItem Header="{my:Localization ContextMenu_Exit}" cal:Message.Attach="ExitApplication" />
         </ContextMenu>

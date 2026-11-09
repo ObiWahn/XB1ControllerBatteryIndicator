@@ -210,4 +210,7 @@
   <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
     <value>Hide icon when no controller is connected</value>
   </data>
+  <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
+    <value>Open log folder</value>
+  </data>
 </root>

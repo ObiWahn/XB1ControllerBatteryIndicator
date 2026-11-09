@@ -31,12 +31,13 @@ namespace XB1ControllerBatteryIndicator
                 var previousConfigPath = FindMostRecentUserConfig(currentConfigPath);
                 if (previousConfigPath != null)
                 {
+                    AppLogger.Info($"Importing settings from {previousConfigPath}.");
                     Import(settings, previousConfigPath);
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex);
+                AppLogger.Error("Importing settings failed.", ex);
             }
 
             settings.UpgradeRequired = false;

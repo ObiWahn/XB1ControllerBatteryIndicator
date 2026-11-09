@@ -45,6 +45,7 @@ namespace XB1ControllerBatteryIndicator
 
         public SystemTrayViewModel()
         {
+            AppLogger.Info($"Application started, version {typeof(SystemTrayViewModel).Assembly.GetName().Version}.");
             GetAvailableLanguages();
             TranslationManager.CurrentLanguageChangedEvent += (sender, args) => GetAvailableLanguages();
 
@@ -101,7 +102,7 @@ namespace XB1ControllerBatteryIndicator
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine(ex);
+                    AppLogger.Error("Controller check failed.", ex);
                 }
                 //always wait, also after an error, so a persistent failure cannot spin the loop
                 if (_checkNow.WaitOne(DisplayIntervalMs))
@@ -176,6 +177,11 @@ namespace XB1ControllerBatteryIndicator
                         Debug.WriteLine(ex);
                     }
                 }
+                if (!Nullable.Equals(_batteryInfo[i], batteryInfo))
+                {
+                    AppLogger.Info($"Controller {controller.UserIndex}: " +
+                        (batteryInfo == null ? "not connected" : $"{batteryInfo.Value.BatteryType}, {batteryInfo.Value.BatteryLevel}") + ".");
+                }
                 _batteryInfo[i] = batteryInfo;
                 UpdateWarning(controller.UserIndex, batteryInfo);
             }
@@ -200,6 +206,7 @@ namespace XB1ControllerBatteryIndicator
             if (!toast_shown[controllerId])
             {
                 toast_shown[controllerId] = true;
+                AppLogger.Info($"Controller {controllerIndex}: low battery warning shown.");
                 ShowToast(controllerIndex, batteryInfo.Value.BatteryLevel);
             }
             //with "repeat on loop" the sound is played by PlayLoopedWarningSound instead
@@ -390,8 +397,22 @@ namespace XB1ControllerBatteryIndicator
             //do nothing
         }
 
+        public void OpenLogFolder()
+        {
+            try
+            {
+                Directory.CreateDirectory(AppLogger.LogDirectory);
+                Process.Start(new ProcessStartInfo(AppLogger.LogDirectory) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                AppLogger.Error("Opening the log folder failed.", ex);
+            }
+        }
+
         public void ExitApplication()
         {
+            AppLogger.Info("Application exiting.");
             System.Windows.Application.Current.Shutdown();
         }
 

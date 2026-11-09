@@ -169,6 +169,15 @@ namespace XB1ControllerBatteryIndicator.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open log folder.
+        /// </summary>
+        public static string ContextMenu_OpenLogFolder {
+            get {
+                return ResourceManager.GetString("ContextMenu_OpenLogFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Taskbar theme.
         /// </summary>
         public static string ContextMenu_Theme {
