@@ -186,4 +186,43 @@
   <data name="ContextMenu_LowBatteryWarningSound_Loop_Enabled" xml:space="preserve">
     <value>Folyamatos figyelmeztetés</value>
   </data>
+  <data name="ContextMenu_FastPolling" xml:space="preserve">
+    <value>Gyors ellenőrzés (5 másodpercenként)</value>
+  </data>
+  <data name="ContextMenu_WarningThreshold" xml:space="preserve">
+    <value>Figyelmeztetés akkuszintnél</value>
+  </data>
+  <data name="Toast_TextLow" xml:space="preserve">
+    <value>Az akku a {0} kontrollerben alacsony.</value>
+  </data>
+  <data name="ContextMenu_Theme" xml:space="preserve">
+    <value>Tálca témája</value>
+  </data>
+  <data name="ContextMenu_Theme_Auto" xml:space="preserve">
+    <value>Automatikus</value>
+  </data>
+  <data name="ContextMenu_Theme_Light" xml:space="preserve">
+    <value>Világos</value>
+  </data>
+  <data name="ContextMenu_Theme_Dark" xml:space="preserve">
+    <value>Sötét</value>
+  </data>
+  <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
+    <value>Ikon elrejtése, ha nincs csatlakoztatott kontroller</value>
+  </data>
+  <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
+    <value>Naplómappa megnyitása</value>
+  </data>
+  <data name="ContextMenu_ShowControllers" xml:space="preserve">
+    <value>Kontrollerek megjelenítése</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessKnownLevel" xml:space="preserve">
+    <value>Vezeték nélküli, ismert akkuszinttel</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessUnknownLevel" xml:space="preserve">
+    <value>Vezeték nélküli, akkuszintre vár</value>
+  </data>
+  <data name="ContextMenu_ShowWired" xml:space="preserve">
+    <value>Kábeles</value>
+  </data>
 </root>

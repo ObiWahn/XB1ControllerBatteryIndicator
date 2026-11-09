@@ -186,4 +186,43 @@
   <data name="ContextMenu_LowBatteryWarningSound_Loop_Enabled" xml:space="preserve">
     <value>Répéter en boucle</value>
   </data>
+  <data name="ContextMenu_FastPolling" xml:space="preserve">
+    <value>Vérification rapide (toutes les 5 secondes)</value>
+  </data>
+  <data name="ContextMenu_WarningThreshold" xml:space="preserve">
+    <value>Avertir au niveau de batterie</value>
+  </data>
+  <data name="Toast_TextLow" xml:space="preserve">
+    <value>La batterie de la manette {0} est faible.</value>
+  </data>
+  <data name="ContextMenu_Theme" xml:space="preserve">
+    <value>Thème de la barre des tâches</value>
+  </data>
+  <data name="ContextMenu_Theme_Auto" xml:space="preserve">
+    <value>Automatique</value>
+  </data>
+  <data name="ContextMenu_Theme_Light" xml:space="preserve">
+    <value>Clair</value>
+  </data>
+  <data name="ContextMenu_Theme_Dark" xml:space="preserve">
+    <value>Sombre</value>
+  </data>
+  <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
+    <value>Masquer l'icône quand aucune manette n'est connectée</value>
+  </data>
+  <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
+    <value>Ouvrir le dossier des journaux</value>
+  </data>
+  <data name="ContextMenu_ShowControllers" xml:space="preserve">
+    <value>Afficher les manettes</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessKnownLevel" xml:space="preserve">
+    <value>Sans fil avec niveau de batterie</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessUnknownLevel" xml:space="preserve">
+    <value>Sans fil, en attente du niveau de batterie</value>
+  </data>
+  <data name="ContextMenu_ShowWired" xml:space="preserve">
+    <value>Filaires</value>
+  </data>
 </root>

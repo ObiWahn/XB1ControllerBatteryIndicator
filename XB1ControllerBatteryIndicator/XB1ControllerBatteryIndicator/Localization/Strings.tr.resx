@@ -186,4 +186,43 @@
   <data name="ContextMenu_LowBatteryWarningSound_Loop_Enabled" xml:space="preserve">
     <value>Uyarı sesini döngüye al</value>
   </data>
+  <data name="ContextMenu_FastPolling" xml:space="preserve">
+    <value>Hızlı kontrol (her 5 saniyede)</value>
+  </data>
+  <data name="ContextMenu_WarningThreshold" xml:space="preserve">
+    <value>Uyarı verilecek batarya seviyesi</value>
+  </data>
+  <data name="Toast_TextLow" xml:space="preserve">
+    <value>{0}. Kontrolcünün bataryası düşük.</value>
+  </data>
+  <data name="ContextMenu_Theme" xml:space="preserve">
+    <value>Görev çubuğu teması</value>
+  </data>
+  <data name="ContextMenu_Theme_Auto" xml:space="preserve">
+    <value>Otomatik</value>
+  </data>
+  <data name="ContextMenu_Theme_Light" xml:space="preserve">
+    <value>Açık</value>
+  </data>
+  <data name="ContextMenu_Theme_Dark" xml:space="preserve">
+    <value>Koyu</value>
+  </data>
+  <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
+    <value>Bağlı kontrolcü yokken simgeyi gizle</value>
+  </data>
+  <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
+    <value>Günlük klasörünü aç</value>
+  </data>
+  <data name="ContextMenu_ShowControllers" xml:space="preserve">
+    <value>Gösterilecek kontrolcüler</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessKnownLevel" xml:space="preserve">
+    <value>Kablosuz, batarya seviyesi bilinen</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessUnknownLevel" xml:space="preserve">
+    <value>Kablosuz, batarya seviyesi bekleniyor</value>
+  </data>
+  <data name="ContextMenu_ShowWired" xml:space="preserve">
+    <value>Kablo ile bağlı</value>
+  </data>
 </root>

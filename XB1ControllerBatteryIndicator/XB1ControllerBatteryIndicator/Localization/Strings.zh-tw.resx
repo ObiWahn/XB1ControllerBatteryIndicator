@@ -186,4 +186,43 @@
   <data name="ContextMenu_LowBatteryWarningSound_Loop_Enabled" xml:space="preserve">
     <value>重複播放</value>
   </data>
+  <data name="ContextMenu_FastPolling" xml:space="preserve">
+    <value>快速檢查（每 5 秒）</value>
+  </data>
+  <data name="ContextMenu_WarningThreshold" xml:space="preserve">
+    <value>在以下電量時提醒</value>
+  </data>
+  <data name="Toast_TextLow" xml:space="preserve">
+    <value>控制器 {0} 的電量低</value>
+  </data>
+  <data name="ContextMenu_Theme" xml:space="preserve">
+    <value>工作列主題</value>
+  </data>
+  <data name="ContextMenu_Theme_Auto" xml:space="preserve">
+    <value>自動</value>
+  </data>
+  <data name="ContextMenu_Theme_Light" xml:space="preserve">
+    <value>淺色</value>
+  </data>
+  <data name="ContextMenu_Theme_Dark" xml:space="preserve">
+    <value>深色</value>
+  </data>
+  <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
+    <value>未連接控制器時隱藏圖示</value>
+  </data>
+  <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
+    <value>開啟記錄資料夾</value>
+  </data>
+  <data name="ContextMenu_ShowControllers" xml:space="preserve">
+    <value>顯示的控制器</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessKnownLevel" xml:space="preserve">
+    <value>無線（已知電量）</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessUnknownLevel" xml:space="preserve">
+    <value>無線（等待電量資訊）</value>
+  </data>
+  <data name="ContextMenu_ShowWired" xml:space="preserve">
+    <value>有線</value>
+  </data>
 </root>

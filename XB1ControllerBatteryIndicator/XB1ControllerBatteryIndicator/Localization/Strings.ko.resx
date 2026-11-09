@@ -186,4 +186,43 @@
   <data name="ContextMenu_LowBatteryWarningSound_Loop_Enabled" xml:space="preserve">
     <value>반복 재생</value>
   </data>
+  <data name="ContextMenu_FastPolling" xml:space="preserve">
+    <value>빠른 확인 (5초마다)</value>
+  </data>
+  <data name="ContextMenu_WarningThreshold" xml:space="preserve">
+    <value>경고할 배터리 수준</value>
+  </data>
+  <data name="Toast_TextLow" xml:space="preserve">
+    <value>컨트롤러 {0}의 배터리가 부족합니다.</value>
+  </data>
+  <data name="ContextMenu_Theme" xml:space="preserve">
+    <value>작업 표시줄 테마</value>
+  </data>
+  <data name="ContextMenu_Theme_Auto" xml:space="preserve">
+    <value>자동</value>
+  </data>
+  <data name="ContextMenu_Theme_Light" xml:space="preserve">
+    <value>밝게</value>
+  </data>
+  <data name="ContextMenu_Theme_Dark" xml:space="preserve">
+    <value>어둡게</value>
+  </data>
+  <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
+    <value>연결된 컨트롤러가 없으면 아이콘 숨기기</value>
+  </data>
+  <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
+    <value>로그 폴더 열기</value>
+  </data>
+  <data name="ContextMenu_ShowControllers" xml:space="preserve">
+    <value>표시할 컨트롤러</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessKnownLevel" xml:space="preserve">
+    <value>무선 (배터리 수준 확인됨)</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessUnknownLevel" xml:space="preserve">
+    <value>무선 (배터리 수준 대기 중)</value>
+  </data>
+  <data name="ContextMenu_ShowWired" xml:space="preserve">
+    <value>유선</value>
+  </data>
 </root>

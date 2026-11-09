@@ -186,4 +186,43 @@
   <data name="ContextMenu_LowBatteryWarningSound_Loop_Enabled" xml:space="preserve">
     <value>Endlos wiederholen</value>
   </data>
+  <data name="ContextMenu_FastPolling" xml:space="preserve">
+    <value>Schnelle Prüfung (alle 5 Sekunden)</value>
+  </data>
+  <data name="ContextMenu_WarningThreshold" xml:space="preserve">
+    <value>Warnen bei Batteriestand</value>
+  </data>
+  <data name="Toast_TextLow" xml:space="preserve">
+    <value>Batterie/Akku von Controller {0} ist schwach.</value>
+  </data>
+  <data name="ContextMenu_Theme" xml:space="preserve">
+    <value>Taskleisten-Design</value>
+  </data>
+  <data name="ContextMenu_Theme_Auto" xml:space="preserve">
+    <value>Automatisch</value>
+  </data>
+  <data name="ContextMenu_Theme_Light" xml:space="preserve">
+    <value>Hell</value>
+  </data>
+  <data name="ContextMenu_Theme_Dark" xml:space="preserve">
+    <value>Dunkel</value>
+  </data>
+  <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
+    <value>Symbol ausblenden, wenn kein Controller verbunden ist</value>
+  </data>
+  <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
+    <value>Protokollordner öffnen</value>
+  </data>
+  <data name="ContextMenu_ShowControllers" xml:space="preserve">
+    <value>Controller anzeigen</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessKnownLevel" xml:space="preserve">
+    <value>Kabellos mit Batteriestand</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessUnknownLevel" xml:space="preserve">
+    <value>Kabellos, wartet auf Batteriestand</value>
+  </data>
+  <data name="ContextMenu_ShowWired" xml:space="preserve">
+    <value>Verkabelt</value>
+  </data>
 </root>

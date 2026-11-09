@@ -186,4 +186,43 @@
   <data name="ContextMenu_LowBatteryWarningSound_Loop_Enabled" xml:space="preserve">
     <value>Opakovat ve smyčce</value>
   </data>
+  <data name="ContextMenu_FastPolling" xml:space="preserve">
+    <value>Rychlá kontrola (každých 5 sekund)</value>
+  </data>
+  <data name="ContextMenu_WarningThreshold" xml:space="preserve">
+    <value>Varovat při stavu baterie</value>
+  </data>
+  <data name="Toast_TextLow" xml:space="preserve">
+    <value>Baterie ovladače {0} je slabá.</value>
+  </data>
+  <data name="ContextMenu_Theme" xml:space="preserve">
+    <value>Motiv hlavního panelu</value>
+  </data>
+  <data name="ContextMenu_Theme_Auto" xml:space="preserve">
+    <value>Automaticky</value>
+  </data>
+  <data name="ContextMenu_Theme_Light" xml:space="preserve">
+    <value>Světlý</value>
+  </data>
+  <data name="ContextMenu_Theme_Dark" xml:space="preserve">
+    <value>Tmavý</value>
+  </data>
+  <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
+    <value>Skrýt ikonu, když není připojen žádný ovladač</value>
+  </data>
+  <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
+    <value>Otevřít složku s protokolem</value>
+  </data>
+  <data name="ContextMenu_ShowControllers" xml:space="preserve">
+    <value>Zobrazit ovladače</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessKnownLevel" xml:space="preserve">
+    <value>Bezdrátové se stavem baterie</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessUnknownLevel" xml:space="preserve">
+    <value>Bezdrátové, čeká se na stav baterie</value>
+  </data>
+  <data name="ContextMenu_ShowWired" xml:space="preserve">
+    <value>Připojené kabelem</value>
+  </data>
 </root>

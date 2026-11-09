@@ -186,4 +186,43 @@
   <data name="ContextMenu_LowBatteryWarningSound_Loop_Enabled" xml:space="preserve">
     <value>Riproduci costantemente</value>
   </data>
+  <data name="ContextMenu_FastPolling" xml:space="preserve">
+    <value>Controllo rapido (ogni 5 secondi)</value>
+  </data>
+  <data name="ContextMenu_WarningThreshold" xml:space="preserve">
+    <value>Avvisa al livello di batteria</value>
+  </data>
+  <data name="Toast_TextLow" xml:space="preserve">
+    <value>La batteria del controller {0} è bassa.</value>
+  </data>
+  <data name="ContextMenu_Theme" xml:space="preserve">
+    <value>Tema della barra delle applicazioni</value>
+  </data>
+  <data name="ContextMenu_Theme_Auto" xml:space="preserve">
+    <value>Automatico</value>
+  </data>
+  <data name="ContextMenu_Theme_Light" xml:space="preserve">
+    <value>Chiaro</value>
+  </data>
+  <data name="ContextMenu_Theme_Dark" xml:space="preserve">
+    <value>Scuro</value>
+  </data>
+  <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
+    <value>Nascondi l'icona quando nessun controller è connesso</value>
+  </data>
+  <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
+    <value>Apri la cartella dei log</value>
+  </data>
+  <data name="ContextMenu_ShowControllers" xml:space="preserve">
+    <value>Mostra controller</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessKnownLevel" xml:space="preserve">
+    <value>Wireless con livello della batteria</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessUnknownLevel" xml:space="preserve">
+    <value>Wireless, in attesa del livello della batteria</value>
+  </data>
+  <data name="ContextMenu_ShowWired" xml:space="preserve">
+    <value>Via cavo</value>
+  </data>
 </root>

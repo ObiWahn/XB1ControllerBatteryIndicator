@@ -201,4 +201,43 @@
   <data name="ContextMenu_ShowWiredControllers" xml:space="preserve">
     <value>Trådbunden handkontroll</value>
   </data>
+  <data name="ContextMenu_FastPolling" xml:space="preserve">
+    <value>Snabbkontroll (var 5:e sekund)</value>
+  </data>
+  <data name="ContextMenu_WarningThreshold" xml:space="preserve">
+    <value>Varna vid batterinivå</value>
+  </data>
+  <data name="Toast_TextLow" xml:space="preserve">
+    <value>Handkontroll {0} - Batterinivån är låg.</value>
+  </data>
+  <data name="ContextMenu_Theme" xml:space="preserve">
+    <value>Aktivitetsfältets tema</value>
+  </data>
+  <data name="ContextMenu_Theme_Auto" xml:space="preserve">
+    <value>Automatiskt</value>
+  </data>
+  <data name="ContextMenu_Theme_Light" xml:space="preserve">
+    <value>Ljust</value>
+  </data>
+  <data name="ContextMenu_Theme_Dark" xml:space="preserve">
+    <value>Mörkt</value>
+  </data>
+  <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
+    <value>Dölj ikonen när ingen handkontroll är ansluten</value>
+  </data>
+  <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
+    <value>Öppna loggmappen</value>
+  </data>
+  <data name="ContextMenu_ShowControllers" xml:space="preserve">
+    <value>Visa handkontroller</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessKnownLevel" xml:space="preserve">
+    <value>Trådlösa med batterinivå</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessUnknownLevel" xml:space="preserve">
+    <value>Trådlösa, väntar på batterinivå</value>
+  </data>
+  <data name="ContextMenu_ShowWired" xml:space="preserve">
+    <value>Trådbundna</value>
+  </data>
 </root>

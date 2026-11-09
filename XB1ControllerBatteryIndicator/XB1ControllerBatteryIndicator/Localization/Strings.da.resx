@@ -189,4 +189,43 @@
   <data name="NewMinorVersionAvailable_Body" xml:space="preserve">
     <value>En mindre opdatering til {0} er tilgængelig. Vil Du åbne hjemmesiden ?</value>
   </data>
+  <data name="ContextMenu_FastPolling" xml:space="preserve">
+    <value>Hurtig kontrol (hvert 5. sekund)</value>
+  </data>
+  <data name="ContextMenu_WarningThreshold" xml:space="preserve">
+    <value>Advar ved batteriniveau</value>
+  </data>
+  <data name="Toast_TextLow" xml:space="preserve">
+    <value>Batteriet på controller {0} er lavt.</value>
+  </data>
+  <data name="ContextMenu_Theme" xml:space="preserve">
+    <value>Proceslinjetema</value>
+  </data>
+  <data name="ContextMenu_Theme_Auto" xml:space="preserve">
+    <value>Automatisk</value>
+  </data>
+  <data name="ContextMenu_Theme_Light" xml:space="preserve">
+    <value>Lyst</value>
+  </data>
+  <data name="ContextMenu_Theme_Dark" xml:space="preserve">
+    <value>Mørkt</value>
+  </data>
+  <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
+    <value>Skjul ikonet, når ingen controller er tilsluttet</value>
+  </data>
+  <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
+    <value>Åbn logmappe</value>
+  </data>
+  <data name="ContextMenu_ShowControllers" xml:space="preserve">
+    <value>Vis controllere</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessKnownLevel" xml:space="preserve">
+    <value>Trådløse med batteriniveau</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessUnknownLevel" xml:space="preserve">
+    <value>Trådløse, afventer batteriniveau</value>
+  </data>
+  <data name="ContextMenu_ShowWired" xml:space="preserve">
+    <value>Kablede</value>
+  </data>
 </root>

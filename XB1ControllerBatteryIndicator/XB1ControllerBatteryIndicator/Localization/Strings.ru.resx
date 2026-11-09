@@ -186,4 +186,43 @@
   <data name="ContextMenu_LowBatteryWarningSound_Loop_Enabled" xml:space="preserve">
     <value>Включить повторение</value>
   </data>
+  <data name="ContextMenu_FastPolling" xml:space="preserve">
+    <value>Быстрая проверка (каждые 5 секунд)</value>
+  </data>
+  <data name="ContextMenu_WarningThreshold" xml:space="preserve">
+    <value>Предупреждать при уровне заряда</value>
+  </data>
+  <data name="Toast_TextLow" xml:space="preserve">
+    <value>Низкий заряд контроллера {0}.</value>
+  </data>
+  <data name="ContextMenu_Theme" xml:space="preserve">
+    <value>Тема панели задач</value>
+  </data>
+  <data name="ContextMenu_Theme_Auto" xml:space="preserve">
+    <value>Автоматически</value>
+  </data>
+  <data name="ContextMenu_Theme_Light" xml:space="preserve">
+    <value>Светлая</value>
+  </data>
+  <data name="ContextMenu_Theme_Dark" xml:space="preserve">
+    <value>Тёмная</value>
+  </data>
+  <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
+    <value>Скрывать значок, если контроллер не подключен</value>
+  </data>
+  <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
+    <value>Открыть папку журнала</value>
+  </data>
+  <data name="ContextMenu_ShowControllers" xml:space="preserve">
+    <value>Показывать контроллеры</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessKnownLevel" xml:space="preserve">
+    <value>Беспроводные с уровнем заряда</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessUnknownLevel" xml:space="preserve">
+    <value>Беспроводные, ожидание уровня заряда</value>
+  </data>
+  <data name="ContextMenu_ShowWired" xml:space="preserve">
+    <value>Проводные</value>
+  </data>
 </root>

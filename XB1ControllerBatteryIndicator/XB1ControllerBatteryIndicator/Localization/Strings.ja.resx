@@ -186,4 +186,43 @@
   <data name="ContextMenu_LowBatteryWarningSound_Loop_Enabled" xml:space="preserve">
     <value>ループ反復</value>
   </data>
+  <data name="ContextMenu_FastPolling" xml:space="preserve">
+    <value>高速チェック (5 秒ごと)</value>
+  </data>
+  <data name="ContextMenu_WarningThreshold" xml:space="preserve">
+    <value>警告するバッテリー残量</value>
+  </data>
+  <data name="Toast_TextLow" xml:space="preserve">
+    <value>コントローラー {0} のバッテリー残量が少なくなっています。</value>
+  </data>
+  <data name="ContextMenu_Theme" xml:space="preserve">
+    <value>タスクバーのテーマ</value>
+  </data>
+  <data name="ContextMenu_Theme_Auto" xml:space="preserve">
+    <value>自動</value>
+  </data>
+  <data name="ContextMenu_Theme_Light" xml:space="preserve">
+    <value>ライト</value>
+  </data>
+  <data name="ContextMenu_Theme_Dark" xml:space="preserve">
+    <value>ダーク</value>
+  </data>
+  <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
+    <value>コントローラーが接続されていないときはアイコンを非表示</value>
+  </data>
+  <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
+    <value>ログ フォルダーを開く</value>
+  </data>
+  <data name="ContextMenu_ShowControllers" xml:space="preserve">
+    <value>表示するコントローラー</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessKnownLevel" xml:space="preserve">
+    <value>ワイヤレス (バッテリー残量あり)</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessUnknownLevel" xml:space="preserve">
+    <value>ワイヤレス (バッテリー残量待機中)</value>
+  </data>
+  <data name="ContextMenu_ShowWired" xml:space="preserve">
+    <value>有線</value>
+  </data>
 </root>

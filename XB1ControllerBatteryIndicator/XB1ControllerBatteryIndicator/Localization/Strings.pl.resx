@@ -186,4 +186,43 @@
   <data name="ContextMenu_LowBatteryWarningSound_Loop_Enabled" xml:space="preserve">
     <value>Powtarzaj</value>
   </data>
+  <data name="ContextMenu_FastPolling" xml:space="preserve">
+    <value>Szybkie sprawdzanie (co 5 sekund)</value>
+  </data>
+  <data name="ContextMenu_WarningThreshold" xml:space="preserve">
+    <value>Ostrzegaj przy poziomie baterii</value>
+  </data>
+  <data name="Toast_TextLow" xml:space="preserve">
+    <value>Bateria w kontrolerze {0} jest słaba.</value>
+  </data>
+  <data name="ContextMenu_Theme" xml:space="preserve">
+    <value>Motyw paska zadań</value>
+  </data>
+  <data name="ContextMenu_Theme_Auto" xml:space="preserve">
+    <value>Automatyczny</value>
+  </data>
+  <data name="ContextMenu_Theme_Light" xml:space="preserve">
+    <value>Jasny</value>
+  </data>
+  <data name="ContextMenu_Theme_Dark" xml:space="preserve">
+    <value>Ciemny</value>
+  </data>
+  <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
+    <value>Ukryj ikonę, gdy nie podłączono kontrolera</value>
+  </data>
+  <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
+    <value>Otwórz folder dziennika</value>
+  </data>
+  <data name="ContextMenu_ShowControllers" xml:space="preserve">
+    <value>Pokaż kontrolery</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessKnownLevel" xml:space="preserve">
+    <value>Bezprzewodowe z poziomem baterii</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessUnknownLevel" xml:space="preserve">
+    <value>Bezprzewodowe, oczekiwanie na poziom baterii</value>
+  </data>
+  <data name="ContextMenu_ShowWired" xml:space="preserve">
+    <value>Przewodowe</value>
+  </data>
 </root>

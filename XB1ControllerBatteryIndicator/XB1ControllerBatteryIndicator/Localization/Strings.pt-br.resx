@@ -186,4 +186,43 @@
   <data name="ContextMenu_LowBatteryWarningSound_Loop_Enabled" xml:space="preserve">
     <value>Repetir continuamente</value>
   </data>
+  <data name="ContextMenu_FastPolling" xml:space="preserve">
+    <value>Verificação rápida (a cada 5 segundos)</value>
+  </data>
+  <data name="ContextMenu_WarningThreshold" xml:space="preserve">
+    <value>Avisar com nível de bateria</value>
+  </data>
+  <data name="Toast_TextLow" xml:space="preserve">
+    <value>A bateria do controle {0} está fraca.</value>
+  </data>
+  <data name="ContextMenu_Theme" xml:space="preserve">
+    <value>Tema da barra de tarefas</value>
+  </data>
+  <data name="ContextMenu_Theme_Auto" xml:space="preserve">
+    <value>Automático</value>
+  </data>
+  <data name="ContextMenu_Theme_Light" xml:space="preserve">
+    <value>Claro</value>
+  </data>
+  <data name="ContextMenu_Theme_Dark" xml:space="preserve">
+    <value>Escuro</value>
+  </data>
+  <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
+    <value>Ocultar o ícone quando nenhum controle estiver conectado</value>
+  </data>
+  <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
+    <value>Abrir pasta de log</value>
+  </data>
+  <data name="ContextMenu_ShowControllers" xml:space="preserve">
+    <value>Mostrar controles</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessKnownLevel" xml:space="preserve">
+    <value>Sem fio com nível de bateria</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessUnknownLevel" xml:space="preserve">
+    <value>Sem fio, aguardando nível de bateria</value>
+  </data>
+  <data name="ContextMenu_ShowWired" xml:space="preserve">
+    <value>Com fio</value>
+  </data>
 </root>

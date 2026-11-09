@@ -186,4 +186,43 @@
   <data name="ContextMenu_LowBatteryWarningSound_Loop_Enabled" xml:space="preserve">
     <value>Blijf herhalen</value>
   </data>
+  <data name="ContextMenu_FastPolling" xml:space="preserve">
+    <value>Snelle controle (elke 5 seconden)</value>
+  </data>
+  <data name="ContextMenu_WarningThreshold" xml:space="preserve">
+    <value>Waarschuwen bij batterijniveau</value>
+  </data>
+  <data name="Toast_TextLow" xml:space="preserve">
+    <value>Batterij van controller {0} is bijna leeg.</value>
+  </data>
+  <data name="ContextMenu_Theme" xml:space="preserve">
+    <value>Taakbalkthema</value>
+  </data>
+  <data name="ContextMenu_Theme_Auto" xml:space="preserve">
+    <value>Automatisch</value>
+  </data>
+  <data name="ContextMenu_Theme_Light" xml:space="preserve">
+    <value>Licht</value>
+  </data>
+  <data name="ContextMenu_Theme_Dark" xml:space="preserve">
+    <value>Donker</value>
+  </data>
+  <data name="ContextMenu_HideWhenNoController" xml:space="preserve">
+    <value>Pictogram verbergen als er geen controller is verbonden</value>
+  </data>
+  <data name="ContextMenu_OpenLogFolder" xml:space="preserve">
+    <value>Logmap openen</value>
+  </data>
+  <data name="ContextMenu_ShowControllers" xml:space="preserve">
+    <value>Controllers weergeven</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessKnownLevel" xml:space="preserve">
+    <value>Draadloos met batterijniveau</value>
+  </data>
+  <data name="ContextMenu_ShowWirelessUnknownLevel" xml:space="preserve">
+    <value>Draadloos, wacht op batterijniveau</value>
+  </data>
+  <data name="ContextMenu_ShowWired" xml:space="preserve">
+    <value>Bedraad</value>
+  </data>
 </root>
