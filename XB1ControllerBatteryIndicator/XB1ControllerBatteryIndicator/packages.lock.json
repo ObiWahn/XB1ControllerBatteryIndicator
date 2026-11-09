@@ -12,11 +12,14 @@
           "Microsoft.Xaml.Behaviors.Wpf": "1.1.37"
         }
       },
-      "Hardcodet.NotifyIcon.Wpf": {
+      "H.NotifyIcon.Wpf": {
         "type": "Direct",
-        "requested": "[1.1.0, )",
-        "resolved": "1.1.0",
-        "contentHash": "FFEkdRSidMrbMfQVwhCzq6KtSyR1qQojqtiUrkCyjnOOuMf7W3TNQkzFnBBxYxFe7uLk5mz7M38wFh1qdWyfvg=="
+        "requested": "[2.4.1, )",
+        "resolved": "2.4.1",
+        "contentHash": "aDfDSHCCOWgQoIvAApiog/MhriXibacqANQm+b5GaRCgRg92u5J2QcoW2C+wIblgxhtGx3o32/DCKWRR5C/KLw==",
+        "dependencies": {
+          "H.NotifyIcon": "2.4.1"
+        }
       },
       "Microsoft.NET.ILLink.Tasks": {
         "type": "Direct",
@@ -29,12 +32,47 @@
         "resolved": "4.0.212",
         "contentHash": "A/17oTTu/oYFSrahT9S6BxDnel/AIhOMSqEOG6MsG/MfchwuOrf144+2IIttu0k2UuSPFjIDKlPoSL5DTniwiw=="
       },
+      "H.GeneratedIcons.System.Drawing": {
+        "type": "Transitive",
+        "resolved": "2.4.1",
+        "contentHash": "gjYhuwHQzISqKhcNYaRdDhzKCoqLZii+6TTHP0MQf4Q9+H6z4f4A5Xu/j8B8XpFPQ1grCMlQYREvNyNJT9Q/Bg==",
+        "dependencies": {
+          "System.Drawing.Common": "10.0.0"
+        }
+      },
+      "H.NotifyIcon": {
+        "type": "Transitive",
+        "resolved": "2.4.1",
+        "contentHash": "nNPgNzo5UHcWYpVLO3AsRlH8fKE9shBA7/WLpZrFZUFbzpKGcLnz15Kmg0pQ851aboAfm3YuHjYFsYQges/pyw==",
+        "dependencies": {
+          "H.GeneratedIcons.System.Drawing": "2.4.1"
+        }
+      },
+      "Microsoft.Win32.SystemEvents": {
+        "type": "Transitive",
+        "resolved": "10.0.0",
+        "contentHash": "bYdnhuD0XxcVTrxc8RyBjXo+AXYWJPnda3clhGz2Kakleyun1PyrzYV8RezT7ZYmR9OBSOgvpFQcvHo/K8Y90w=="
+      },
       "Microsoft.Xaml.Behaviors.Wpf": {
         "type": "Transitive",
         "resolved": "1.1.37",
         "contentHash": "TxH7g5I/4UzOHfs0GqD1W4evdl7DIHOQCr/KWc4G4BkgtsAhaHHXAW5JbKrkB7cqClN0JYOX6j9/4v4emCjFIA=="
+      },
+      "System.Drawing.Common": {
+        "type": "Transitive",
+        "resolved": "10.0.0",
+        "contentHash": "kohT9ZZlkB5R5ifihCBnPJLdIUQGiTj1ZI6z4LKatr+F4MmIJJu7qQpBkqt9280ivtnSvlTx9qZEY+CpJ0zMkA==",
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "10.0.0"
+        }
       }
     },
-    "net10.0-windows10.0.19041/win-x64": {}
+    "net10.0-windows10.0.19041/win-x64": {
+      "Microsoft.Win32.SystemEvents": {
+        "type": "Transitive",
+        "resolved": "10.0.0",
+        "contentHash": "bYdnhuD0XxcVTrxc8RyBjXo+AXYWJPnda3clhGz2Kakleyun1PyrzYV8RezT7ZYmR9OBSOgvpFQcvHo/K8Y90w=="
+      }
+    }
   }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Data;
+using H.NotifyIcon;
 
 namespace XB1ControllerBatteryIndicator
 {
@@ -16,6 +17,8 @@ namespace XB1ControllerBatteryIndicator
         {
             InitializeComponent();
             this.ShowInTaskbar = false;
+            //H.NotifyIcon creates the icon only once it is loaded, this hidden window shouldn't have to be shown for that
+            ((TaskbarIcon)FindResource("SystemTrayIcon")).ForceCreate(enablesEfficiencyMode: false);
 
             var language = new CultureInfo(Properties.Settings.Default.Language);
             TranslationManager.CurrentLanguage = language;
