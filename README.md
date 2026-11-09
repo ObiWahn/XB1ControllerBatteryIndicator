@@ -25,6 +25,36 @@
 > - **Bug fixes in the polling loop.** Warnings are tracked per controller (all of them, not only the
 >   one shown), the warning sound plays again each time a battery reaches the warning level, and an
 >   error can no longer make the loop spin at full CPU load.
+> - **Maintained tray icon library.** `Hardcodet.NotifyIcon.Wpf` (no release since 2019) was replaced by
+>   its successor `H.NotifyIcon.Wpf`, which also shows the tooltip on Windows 11. The unused
+>   `System.Management` package was removed.
+> - **Settings are kept on update.** The first start of a new version takes over the settings of the
+>   previous one, and the autostart entry is updated in case the program was moved.
+> - **Choose which controllers to show.** "Show controllers" in the tray menu hides wired controllers or
+>   wireless ones with or without a known battery level from the icon. Hidden controllers still warn
+>   about low batteries.
+> - **Diagnostics log.** Errors, controller changes and warnings are written to
+>   `%LOCALAPPDATA%\XB1ControllerBatteryIndicator\log.txt`; "Open log folder" in the tray menu opens it.
+> - **Fixes:** a translation containing `&`, `<` or `'` no longer stops the low battery notification
+>   from showing, and startup no longer probes all ~800 system languages for translations.
+> - **Translations.** The menu entries added in this fork are translated into all languages. These
+>   translations are machine-made, corrections from native speakers are welcome.
+>
+> ### Credits
+> Many of these changes were found or first made in other forks of this project:
+> - [bergi9](https://github.com/bergi9/XB1ControllerBatteryIndicator): .NET 10 port review, which found
+>   the toast escaping problem, the unused theme watcher, the slow language check, the lost settings and
+>   the unused files, and the settings import this fork uses.
+> - [wefalltomorrow](https://github.com/wefalltomorrow/XB1ControllerBatteryIndicator): Windows warning
+>   sound, warning at "Low", taskbar theme override, hiding the icon without controller, 5-second checks
+>   and the diagnostics log.
+> - [Friday-The13-rus](https://github.com/Friday-The13-rus/XB1ControllerBatteryIndicator): switch to
+>   H.NotifyIcon for the Windows 11 tooltip.
+> - [rolodato](https://github.com/rolodato/XB1ControllerBatteryIndicator): choosing which controllers to
+>   show.
+>
+> The original program was written by [RobertBeekman](https://github.com/RobertBeekman/XB1ControllerBatteryIndicator)
+> and continued by [NiyaShy](https://github.com/NiyaShy/XB1ControllerBatteryIndicator).
 
 A tray application that shows a battery indicator for an Xbox-ish controller and gives a notification when the battery level drops to (almost) empty. 
 
