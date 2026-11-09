@@ -82,10 +82,11 @@ namespace XB1ControllerBatteryIndicator
             public short ThumbRY;
         }
 
-        [DllImport("xinput1_4.dll")]
+        //load from System32 only, so a xinput1_4.dll next to the exe (e.g. in Downloads) is never picked up
+        [DllImport("xinput1_4.dll"), DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
         private static extern uint XInputGetState(uint dwUserIndex, out State pState);
 
-        [DllImport("xinput1_4.dll")]
+        [DllImport("xinput1_4.dll"), DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
         private static extern uint XInputGetBatteryInformation(uint dwUserIndex, BatteryDeviceType devType, out BatteryInformation pBatteryInformation);
     }
 }
