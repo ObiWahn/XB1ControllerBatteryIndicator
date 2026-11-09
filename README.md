@@ -1,5 +1,10 @@
 # XBox One Controller Battery Indicator
 
+**Where to put it.** Before the first start, move the `.exe` to a folder of its own, e.g.
+`%LOCALAPPDATA%\Programs\XB1ControllerBatteryIndicator\`, and always start it from there. The Start
+menu shortcut and the autostart entry point to the path it was started from. To update, quit the
+app, replace the `.exe` in that folder and start it again.
+
 > ## About this fork
 > This fork changes the original project as follows:
 > - **Auto update removed.** The update check downloaded version info over plain HTTP from a
