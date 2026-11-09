@@ -16,16 +16,24 @@ namespace XB1ControllerBatteryIndicator
             UpdateAvailableLanguages();
         }
 
+        //the languages of Localization/Strings*.resx, "en" is the neutral language in Strings.resx
+        private static readonly string[] ShippedLanguages =
+        {
+            "cs", "da", "de", "en", "es", "fr", "hu", "it", "ja", "ko", "nl", "pl", "pt-BR", "ru", "sv", "tr", "uk-UA",
+            "zh-CN", "zh-TW"
+        };
+
+        //probing only the shipped languages instead of the ~800 system cultures keeps startup fast
         private static void UpdateAvailableLanguages()
         {
             var resourceManager = new ResourceManager(typeof(Strings));
             var result = new List<CultureInfo>();
 
-            var cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
-            foreach (var culture in cultures.Where(info => !Equals(info, CultureInfo.InvariantCulture)))
+            foreach (var name in ShippedLanguages)
             {
                 try
                 {
+                    var culture = new CultureInfo(name);
                     var rs = resourceManager.GetResourceSet(culture, true, false);
                     if (rs != null)
                         result.Add(culture);
