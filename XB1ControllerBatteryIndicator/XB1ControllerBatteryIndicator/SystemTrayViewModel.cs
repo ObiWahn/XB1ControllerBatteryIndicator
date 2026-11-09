@@ -10,6 +10,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Globalization;
 using System.Media;
+using System.Security;
 using XB1ControllerBatteryIndicator.ShellHelpers;
 using XB1ControllerBatteryIndicator.Localization;
 using XB1ControllerBatteryIndicator.Properties;
@@ -340,19 +341,19 @@ namespace XB1ControllerBatteryIndicator
             var toastText = batteryLevel == BatteryLevel.Empty ? Strings.Toast_Text : Strings.Toast_TextLow;
             string argsDismiss = $"dismissed";
             string argsLaunch = $"{controllerId}";
-            //how the content gets arranged
+            //how the content gets arranged, translated texts are escaped so a "&", "<" or "'" cannot break the XML
             string toastVisual =
                 $@"<visual>
                         <binding template='ToastGeneric'>
-                            <text>{string.Format(Strings.Toast_Title, controllerIndexCaption)}</text>
-                            <text>{string.Format(toastText, controllerIndexCaption)}</text>
-                            <text>{Strings.Toast_Text2}</text>
+                            <text>{SecurityElement.Escape(string.Format(Strings.Toast_Title, controllerIndexCaption))}</text>
+                            <text>{SecurityElement.Escape(string.Format(toastText, controllerIndexCaption))}</text>
+                            <text>{SecurityElement.Escape(Strings.Toast_Text2)}</text>
                         </binding>
                     </visual>";
             //Button on the toast
             string toastActions =
                 $@"<actions>
-                        <action content='{Strings.Toast_Dismiss}' arguments='{argsDismiss}'/>
+                        <action content='{SecurityElement.Escape(Strings.Toast_Dismiss)}' arguments='{argsDismiss}'/>
                    </actions>";
             //combine content and button
             string toastXmlString =
