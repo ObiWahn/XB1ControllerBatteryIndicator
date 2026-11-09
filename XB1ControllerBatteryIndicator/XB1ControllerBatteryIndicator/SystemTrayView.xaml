@@ -42,7 +42,7 @@
                     </Style>
                 </MenuItem.ItemContainerStyle>
             </MenuItem>
-            <MenuItem Header="{my:Localization ContextMenu_LowBatteryWarningSound}" IsCheckable="False" ItemsSource="{Binding Path=LowBatteryWarningSoundOptions}" DisplayMemberPath="DisplayName">
+            <MenuItem Header="{my:Localization ContextMenu_LowBatteryWarningSound}" IsCheckable="False">
                 <MenuItem x:Name="LowBatteryWarningSound_Enabled" Header="{my:Localization ContextMenu_LowBatteryWarningSound_Enabled}" IsCheckable="True" Click="LowBatteryWarningSound_Enabled_Click" IsChecked="{my:SettingBinding Path=LowBatteryWarningSound_Enabled}" />
                 <MenuItem x:Name="LowBatteryWarningSound_Loop_Enabled" Header="{my:Localization ContextMenu_LowBatteryWarningSound_Loop_Enabled}" IsCheckable="True" Click="LowBatteryWarningSound_Loop_Enabled_Click" IsChecked="{my:SettingBinding Path=LowBatteryWarningSound_Loop_Enabled}" />
             </MenuItem>
