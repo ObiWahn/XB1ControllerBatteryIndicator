@@ -31,7 +31,7 @@ namespace XB1ControllerBatteryIndicator
                 var previousConfigPath = FindMostRecentUserConfig(currentConfigPath);
                 if (previousConfigPath != null)
                 {
-                    AppLogger.Info($"Importing settings from {previousConfigPath}.");
+                    AppLogger.Info($"Importing settings from {WithoutUserProfile(previousConfigPath)}.");
                     Import(settings, previousConfigPath);
                 }
             }
@@ -42,6 +42,15 @@ namespace XB1ControllerBatteryIndicator
 
             settings.UpgradeRequired = false;
             settings.Save();
+        }
+
+        //the log may be attached to a bug report, so it shouldn't contain the user name from the profile path
+        private static string WithoutUserProfile(string path)
+        {
+            var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            return path.StartsWith(localAppData, StringComparison.OrdinalIgnoreCase)
+                ? "%LOCALAPPDATA%" + path.Substring(localAppData.Length)
+                : path;
         }
 
         //returns null if there is none or the current build's user.config is already the most recent one
