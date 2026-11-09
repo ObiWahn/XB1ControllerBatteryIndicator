@@ -494,15 +494,9 @@ namespace XB1ControllerBatteryIndicator
             }
             using (RegistryKey key = Registry.CurrentUser.OpenSubKey(ThemeRegKeyPath))
             {
+                //a missing or non-DWORD value counts as dark taskbar
                 object registryValueObject = key?.GetValue(ThemeRegValueName);
-                if (registryValueObject == null)
-                {
-                    return "";
-                }
-
-                int registryValue = (int)registryValueObject;
-
-                return registryValue > 0 ? "-black" : "";
+                return registryValueObject is int registryValue && registryValue > 0 ? "-black" : "";
             }
         }
     }

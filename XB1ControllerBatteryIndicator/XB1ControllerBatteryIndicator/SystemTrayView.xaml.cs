@@ -20,7 +20,16 @@ namespace XB1ControllerBatteryIndicator
             //H.NotifyIcon creates the icon only once it is loaded, this hidden window shouldn't have to be shown for that
             ((TaskbarIcon)FindResource("SystemTrayIcon")).ForceCreate(enablesEfficiencyMode: false);
 
-            var language = new CultureInfo(Properties.Settings.Default.Language);
+            CultureInfo language;
+            try
+            {
+                language = new CultureInfo(Properties.Settings.Default.Language);
+            }
+            catch (CultureNotFoundException)
+            {
+                //a broken or imported user.config must not stop the app from starting
+                language = new CultureInfo("en");
+            }
             TranslationManager.CurrentLanguage = language;
 
             //the exe may have moved since autostart was enabled, e.g. after an update
@@ -29,7 +38,8 @@ namespace XB1ControllerBatteryIndicator
                 StartWithWindows();
             }
         }
-        RegistryKey autoStartKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+        //CreateSubKey opens the key writable and creates it if it is missing, OpenSubKey would return null then
+        RegistryKey autoStartKey = Registry.CurrentUser.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run");
         private string appID = "XB1ControllerBatteryIndicator";
 
         //create autostart registry key
