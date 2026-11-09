@@ -404,10 +404,9 @@ namespace XB1ControllerBatteryIndicator
         //react to click on toast or button
         private void ToastActivated(ToastNotification sender, object e)
         {
-            var toastArgs = e as ToastActivatedEventArgs;
-            int controllerId = 0;
-            //if the return value contains a controller ID
-            if (Int32.TryParse(toastArgs.Arguments, out controllerId))
+            //if the return value contains a valid controller ID (1-4, see numdict)
+            if (e is ToastActivatedEventArgs toastArgs && Int32.TryParse(toastArgs.Arguments, out int controllerId) &&
+                controllerId >= 1 && controllerId < toast_shown.Length)
             {
                 //reset the toast warning (it will trigger again if battery level is still empty)
                 toast_shown[controllerId] = false;
