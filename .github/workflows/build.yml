@@ -15,6 +15,23 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
+      # every translation must have all strings of Strings.resx, otherwise menu entries show in English
+      - name: Check translations
+        shell: bash
+        run: |
+          python - XB1ControllerBatteryIndicator/XB1ControllerBatteryIndicator/Localization <<'EOF'
+          import glob, os, sys, xml.etree.ElementTree as ET
+          names = lambda path: {data.get("name") for data in ET.parse(path).getroot().iter("data")}
+          english = names(os.path.join(sys.argv[1], "Strings.resx"))
+          failed = False
+          for path in sorted(glob.glob(os.path.join(sys.argv[1], "Strings.*.resx"))):
+              missing = sorted(english - names(path))
+              if missing:
+                  print(f"::error file={path}::missing {', '.join(missing)}")
+                  failed = True
+          sys.exit(failed)
+          EOF
+
       - uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4.3.1
         with:
           dotnet-version: 10.0.x
